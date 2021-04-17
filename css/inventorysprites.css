@@ -1,0 +1,142 @@
+#ybutton {
+  width: 400px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#ybutton > div {
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 70%;
+  image-rendering: pixelated;
+}
+
+#abutton {
+  width: 400px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+#abutton > div {
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 70%;
+  image-rendering: pixelated;
+}
+
+div.level0 {
+  filter: brightness(50%);
+}
+
+.placing {
+  filter: brightness(150%)!important;
+}
+
+.bow {
+  background: url('../images/items/bow.png');
+}
+
+.sword {
+  background: url('../images/items/fightersword.png');
+}
+
+.sword.level2 {
+  background: url('../images/items/master_sword.png');
+}
+
+.hookshot {
+  background: url('../images/items/hookshot.png');
+}
+
+.mushroom {
+  background: url('../images/items/mushroom.png');
+}
+
+.powder {
+  background: url('../images/items/powder.png');
+}
+
+.firerod {
+  background: url('../images/items/firerod.png');
+}
+
+.icerod {
+  background: url('../images/items/icerod.png');
+}
+
+.bombos {
+  background: url('../images/items/bombos.png');
+}
+
+.ether {
+  background: url('../images/items/ether.png');
+}
+
+.quake {
+  background: url('../images/items/quake.png');
+}
+
+.lamp {
+  background: url('../images/items/lamp.png');
+}
+
+.hammer {
+  background: url('../images/items/hammer.png');
+}
+
+.flute {
+  background: url('../images/items/flute.png');
+}
+
+.shovel {
+  background: url('../images/items/shovel.png');
+}
+
+.book {
+  background: url('../images/items/book.png');
+}
+
+.bottle {
+  background: url('../images/items/red_goo.png');
+}
+
+.somaria {
+  background: url('../images/items/somaria.png');
+}
+
+.byrna {
+  background: url('../images/items/byrna.png');
+}
+
+.cape {
+  background: url('../images/items/cape.png');
+}
+
+.mirror {
+  background: url('../images/items/mirror.png');
+}
+
+.boots {
+  background: url('../images/items/boots.png');
+}
+
+.glove {
+  background: url('../images/items/power_glove.png');
+}
+
+.glove.level2 {
+  background: url('../images/items/titans_mitts.png');
+}
+
+.flippers {
+  background: url('../images/items/flippers.png');
+}
+
+.mearl {
+  background: url('../images/items/mearl.png');
+}

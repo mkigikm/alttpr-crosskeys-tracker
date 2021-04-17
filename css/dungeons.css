@@ -1,0 +1,78 @@
+#dungeons {
+  color: white;
+  font-size: 24px;
+  padding-top: 5px;
+  user-select: none;
+}
+
+#dungeons > div {
+  display: flex;
+  flex-flow: row wrap;
+  height: 30px;
+  cursor: pointer;
+  text-align: right;
+}
+
+#dungeons > div > div {
+  width: 18px;
+}
+
+#dungeons > div > div:last-child {
+  width: 25px;
+}
+
+.incomplete {
+  filter: brightness(50%);
+}
+
+.all-keys {
+  color: #33FF57;
+}
+
+.big-key, .crystal, .red-crystal, .green-pendant, .blue-pendant {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  image-rendering: pixelated;
+}
+
+.unknown-prize::after {
+  content: '?';
+}
+
+.big-key {
+  background-image: url('../images/dungeon_items/big_key.png');
+}
+
+.crystal {
+  background-image: url('../images/dungeon_items/crystal.png');
+  background-size: auto 75%;
+}
+
+.red-crystal {
+  background-image: url('../images/dungeon_items/red_crystal.png');
+  background-size: auto 75%;
+}
+
+.unknown-prize {
+  filter: grayscale(100%);
+}
+
+.green-pendant {
+  background-image: url('../images/dungeon_items/green_pendant.png');
+  background-size: auto 75%;
+}
+
+.blue-pendant {
+  background-image: url('../images/dungeon_items/red_pendant.png');
+  background-size: auto 75%;
+}
+
+.red-pendant {
+  background-image: url('../images/dungeon_items/blue_pendant.png');
+  background-size: auto 75%;
+}
+
+.keys {
+  text-align: center;
+}

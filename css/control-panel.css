@@ -1,0 +1,66 @@
+#controls {
+  width: 500px;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: black;
+}
+
+.control-selection {
+  width: 80px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.control-selection > div {
+  width: 40px;
+  height: 40px;
+}
+
+.control-specifics {
+  width: 420px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.two-rows > div {
+  height: 60px;
+}
+.three-rows > div {
+  height: 40px;
+}
+.two-columns > div {
+  width: 50%;
+}
+.four-columns > div{
+  width: 25%;
+}
+.five-columns > div{
+  width: 20%;
+}
+.six-columns > div{
+  width: 16.667%;
+}
+.ten-columns > div{
+  width: 10%;
+}
+.ten-columns, .six-columns, .four-columns, .two-columns, .five-columns {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+#controls div {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 70%;
+  image-rendering: pixelated;
+  box-sizing: border-box;
+}
+
+#controls .tracking {
+  filter: brightness(200%);
+}
+
+#controls .tracked {
+  filter: grayscale(100%);
+}

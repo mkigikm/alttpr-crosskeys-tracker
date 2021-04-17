@@ -1,0 +1,323 @@
+.hyrule-maps > div, canvas {
+  height: 500px;
+  width: 500px;
+  position: relative
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 500px;
+  width: 500px;
+}
+
+#lw-map {
+  background-image: url('../images/maps/light_world.png');
+  background-size: cover;
+}
+
+#dw-map {
+  background-image: url('../images/maps/dark_world.png');
+  background-size: cover;
+}
+
+#portal {
+  position: absolute;
+  left: 50px;
+  top: 450px;
+  width: 40px;
+  height: 40px;
+  background-image: url('../images/map/portal.png');
+  background-size: cover;
+  image-rendering: pixelated;
+  z-index: 2;
+}
+
+.location {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  border: 1px solid black;
+  background-size: cover;
+  background-color: black;
+  z-index: 2;
+}
+
+.location:hover {
+  width: 29px;
+  height: 29px;
+  transform: translate(-5px, -5px);
+  z-index: 10000;
+}
+
+.location.checkable {
+  outline: 1px solid #7FFF00;
+  border: 1px solid #7FFF00;
+}
+
+.location.uncheckable {
+  outline: 1px solid #FF4500;
+  border: 1px solid #FF4500;
+}
+
+.drop {
+  background-image: url('../drain.png');
+}
+
+.item {
+  background-image: url('../images/map/heart_piece2.png');
+}
+
+.bottle-merchant {
+  background-image: url('../images/map/bottle_merchant.png');
+}
+
+.hidden {
+  background: rgba(0, 0, 0, 0.3)!important;
+}
+
+.magic-bat {
+  background-image: url('../images/map/magic_bat.png');
+}
+
+.ganon {
+  background-image: url('../images/map/ganon.png');
+}
+
+.uncle {
+  background-image: url('../images/map/uncle.png');
+}
+
+.sanctuary {
+  background-image: url('../images/map/sanctuary.png');
+}
+
+.hideout {
+  background-image: url('../images/map/hideout.png');
+}
+
+.fairy-drop {
+  background-image: url('../images/map/fairy.png');
+}
+
+.lumberjack-drop {
+  background-image: url('../images/map/lumberjacks.png');
+}
+
+.well {
+  background-image: url('../images/map/well.png');
+}
+
+.info {
+  background-image: url('../images/map/info.png');
+}
+
+.elder, .elder-west, .elder-east {
+  background-image: url('../images/map/elder.png');
+}
+
+.hookshot-cave {
+  background-image: url('../images/map/hookshot_cave.png');
+}
+
+.chest {
+  background-image: url('../images/map/chest.png');
+}
+
+.dark {
+  background-image: url('../images/items/lamp.png');
+}
+
+.smith {
+  background-image: url('../images/map/smith.png');
+}
+
+.mimic {
+  background-image: url('../images/map/mimic.png');
+}
+
+.bomb-shop {
+  background-image: url('../images/map/big_bomb.png');
+}
+
+.sick-kid {
+  background-image: url('../images/map/sick_kid.gif');
+}
+
+.saha {
+  background-image: url('../images/map/saha.png');
+}
+
+.library {
+  background-image: url('../images/items/book.png');
+}
+
+.dam {
+  background-image: url('../images/map/dam.png');
+}
+
+.superbunny-bottom, .superbunny-top {
+  background-image: url('../images/map/superbunny.gif');
+}
+
+.hookshot-cave-entrance, .hookshot-cave-exit {
+  background-image: url('../images/map/hookshot_cave.png');
+}
+
+.bumper-cave-entrance, .bumper-cave-exit {
+  background-image: url('../images/map/bumper.png');
+}
+
+.castle-tower {
+  background-image: url('../images/map/castle_tower.png');
+}
+
+.desert-back {
+  background-image: url('../images/map/desert_back.png');
+} 
+
+.hyrule-main, .hyrule-west, .hyrule-east {
+  background-image: url('../images/map/zelda.png');
+}
+
+.desert-main, .desert-west, .desert-east {
+  background-image: url('../images/map/desert.png');
+}
+
+.eastern {
+  background-image: url('../images/map/eastern.png');
+}
+
+.hera {
+  background-image: url('../images/map/hera.png');
+}
+
+.tr-main {
+  background-image: url('../images/map/chainchomps.png');
+}
+
+.tr-west {
+  background-image: url('../images/map/tr_west.png');
+}
+
+.tr-east {
+  background-image: url('../images/map/tr_east.png');
+}
+
+.tr-back {
+  background-image: url('../images/map/trinexx.png');
+}
+
+.pod {
+  background-image: url('../images/map/pod.png');
+}
+
+.skull-woods {
+  background-image: url('../images/map/skull_woods.png');
+}
+
+.thieves-town {
+  background-image: url('../images/map/thieves_town.png');
+}
+
+.ice-palace {
+  background-image: url('../images/map/ice_palace.png');
+}
+
+.swamp-palace {
+  background-image: url('../images/map/swamp.png');
+}
+
+.misery-mire {
+  background-image: url('../images/map/mire.png');
+}
+
+.gt {
+  background-image: url('../images/map/gt.png');
+}
+
+.location.tr-west {
+  background-position: center;
+}
+
+.location.gt {
+  background-position: center;
+}
+
+.location.tr-main {
+  background-position: center 75%;
+}
+
+
+.old-man-main, .old-man-back {
+  background-image: url('../images/map/old_man.png');
+}
+
+.spiral-top, .spiral-bottom {
+  background-image: url('../images/map/mini_moldorm.png');
+}
+
+.fairy-top, .fairy-bottom {
+  background-image: url('../images/map/great_fairy.png');
+}
+
+.brothers-west, .brothers-east {
+  background-image: url('../images/map/brothers.png');
+}
+
+.climb-bottom, .climb-top {
+  background-image: url('../images/map/rock.png');
+}
+
+.spike {
+  background-image: url('../images/map/spikes.png');
+}
+
+.paradox-2items, .paradox-5items, .paradox-exit {
+  background-image: url('../images/map/push_block.png');
+}
+
+.return-top, .return-bottom {
+  background-image: url('../images/map/torch_light.png');
+}
+
+.spec-rock-item, .spec-rock-exit, .spec-rock-underpass {
+  background-image: url('../images/map/red_taros.png');
+}
+
+.boulder {
+  background-image: url('../images/map/boulder.png');
+}
+
+.king-zora {
+  background-image: url('../images/map/king_zora.png');
+}
+
+.purple-chest {
+  background-image: url('../images/map/purple_chest.png');
+}
+
+.catfish {
+  background-image: url('../images/map/catfish.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.stumpy {
+  background-image: url('../images/map/stumpy.png');
+}
+
+.hobo {
+  background-image: url('../images/map/hobo.png');
+}
+
+.pedestal {
+  background-image: url('../images/map/pedestal.gif');
+}
+
+.potion-shop {
+  background-image: url('../images/map/potion_shop.png');
+}

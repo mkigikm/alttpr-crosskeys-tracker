@@ -1,0 +1,16 @@
+const dungeonData = [
+  {name: 'CV', keys: 0, items: 70, noBigKey: true, noPrize: true},
+  {name: 'HC', keys: 1, items: 8, noBigKey: true, noPrize: true},
+  {name: 'EP', keys: 0, items: 6},
+  {name: 'DP', keys: 1, items: 6},
+  {name: 'TH', keys: 1, items: 6},
+  {name: 'CT', keys: 2, items: 2, noBigKey: true, noPrize: true},
+  {name: 'PD', keys: 6, items: 14},
+  {name: 'SP', keys: 1, items: 10},
+  {name: 'SW', keys: 3, items: 8},
+  {name: 'TT', keys: 1, items: 8},
+  {name: 'IP', keys: 2, items: 8},
+  {name: 'MM', keys: 3, items: 8},
+  {name: 'TR', keys: 4, items: 12},
+  {name: 'GT', keys: 4, items: 27, noPrize: true},
+];

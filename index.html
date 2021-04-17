@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./css/inventorysprites.css">
+    <link rel="stylesheet" href="./css/dungeons.css">
+    <link rel="stylesheet" href="./css/hyrule-map.css">
+    <link rel="stylesheet" href="./css/control-panel.css">
+    <style>
+     @font-face {
+       font-family: 'ReturnofGanon';
+       src: url('./fonts/ReturnofGanon/OpenType-TT/ReturnofGanon.ttf');
+     }
+     body {
+       font-family: 'ZeldaDX', 'ReturnofGanon', Fallback, sans-serif;
+       margin: 0;
+       background-color: black;
+       color: white;
+     }
+     #inventory-dungeons {
+       width: 500px;
+       display: flex;
+       flex-flow: row wrap;
+       background-color: black;
+     }
+     .entrance {
+       background-image: url('./door.png');
+       background-size: cover;
+     }
+     #display {
+       line-height: 30px;
+       height: 30px;
+       text-align: center;
+       width: 500px;
+     }
+    </style>
+  </head>
+  <body>
+    <div class="hyrule-maps">
+      <div id="lw-map" style="display: block">
+        <canvas id="lightworld-connections" width="500" height="500"></canvas>
+      </div>
+      <div id="dw-map" style="display: none">
+        <canvas id="darkworld-connections" width="500" height="500"></canvas>
+      </div>
+      <div id="portal"></div>
+    </div>
+    <div id="display"></div>
+    <div id="controls">
+      <div class="control-selection">
+        <div id="dropdowns-toggle" class="well"></div>
+        <div id="info-toggle" class="info"></div>
+        <div id="lw-connectors-toggle" class="elder"></div>
+        <div id="dw-connectors-toggle" class="hookshot-cave"></div>
+        <div id="lw-dungeons-toggle" class="red-pendant"></div>
+        <div id="dw-dungeons-toggle" class="crystal"></div>
+      </div>
+      <div id="dropdowns" style="display:flex" class="control-specifics two-rows">
+        <div class="four-columns">
+          <div class="lumberjack-drop"></div>
+          <div class="sanctuary"></div>
+          <div class="fairy-drop"></div>
+          <div class="hideout"></div>
+        </div>
+        <div class="four-columns">
+          <div class="well"></div>
+          <div class="magic-bat"></div>
+          <div class="uncle"></div>
+          <div class="ganon"></div>
+        </div>
+      </div>
+      <div id="info" style="display:none" class="control-specifics two-rows">
+        <div class="six-columns">
+          <div class="chest"></div>
+          <div class="dark"></div>
+          <div class="potion-shop"></div>
+          <div class="smith"></div>
+          <div class="mimic"></div>
+          <div class="spike"></div>
+        </div>
+        <div class="five-columns">
+          <div class="bomb-shop"></div>
+          <div class="dam"></div>
+          <div class="sick-kid"></div>
+          <div class="saha"></div>
+          <div class="library"></div>
+        </div>
+      </div>
+      <div id="lw-dungeons" style="display:none" class="control-specifics two-rows">
+        <div class="four-columns">
+          <div class="hyrule-west"></div>
+          <div class="hyrule-main"></div>
+          <div class="hyrule-east"></div>
+          <div class="castle-tower"></div>
+        </div>
+
+        <div class="six-columns">
+          <div class="eastern"></div>
+          <div class="desert-west"></div>
+          <div class="desert-main"></div>
+          <div class="desert-east"></div>
+          <div class="desert-back"></div>
+          <div class="hera"></div>
+        </div>
+      </div>
+      <div id="dw-dungeons" style="display:none" class="control-specifics two-rows">
+        <div class="six-columns">
+          <div class="pod"></div>
+          <div class="swamp-palace"></div>
+          <div class="skull-woods"></div>
+          <div class="thieves-town"></div>
+          <div class="ice-palace"></div>
+          <div class="misery-mire"></div>
+        </div>
+
+        <div class="five-columns">
+          <div class="tr-main"></div>
+          <div class="tr-west"></div>
+          <div class="tr-east"></div>
+          <div class="tr-back"></div>
+          <div class="gt"></div>
+        </div>
+      </div>
+      <div id="lw-connectors" style="display:none" class="control-specifics three-rows">
+        <div class="ten-columns">
+          <div class="return-top"></div>
+          <div class="return-bottom"></div>
+          <div class="old-man-main"></div>
+          <div class="old-man-back"></div>
+          <div class="fairy-top"></div>
+          <div class="fairy-bottom"></div>
+          <div class="elder-west"></div>
+          <div class="elder-east"></div>
+          <div class="brothers-west"></div>
+          <div class="brothers-east"></div>
+        </div>
+
+        <div class="four-columns">
+          <div class="climb-bottom"></div>
+          <div class="climb-top"></div>
+          <div class="spiral-top"></div>
+          <div class="spiral-bottom"></div>
+        </div>
+
+        <div class ="six-columns">
+          <div class="spec-rock-item"></div>
+          <div class="spec-rock-exit"></div>
+          <div class="spec-rock-underpass"></div>
+          <div class="paradox-2items"></div>
+          <div class="paradox-5items"></div>
+          <div class="paradox-exit"></div>
+        </div>
+      </div>
+      <div id="dw-connectors" style="display:none" class="control-specifics two-rows">
+        <div class="four-columns">
+          <div class="hookshot-cave-entrance"></div>
+          <div class="hookshot-cave-exit"></div>
+          <div class="bumper-cave-entrance"></div>
+          <div class="bumper-cave-exit"></div>
+        </div>
+        <div class="two-columns">
+          <div class="superbunny-bottom"></div>
+          <div class="superbunny-top"></div>
+        </div>
+      </div>
+    </div>
+    <div id="inventory-dungeons">
+      <div id="items">
+        <div id="ybutton"></div>
+        <div id="abutton"></div>
+      </div>
+      <div id="dungeons"></div>
+    </div>
+    <textarea rows="7" cols="60"></textarea>
+    <script src="js/edge_data.js"></script>
+    <script src="js/available_map.js"></script>
+    <script src="js/display.js"></script>
+    <script src="js/inventory_objects.js"></script>
+    <script src="js/dungeon_objects.js"></script>
+    <script src="js/dungeons.js"></script>
+    <script src="js/connectors.js"></script>
+    <script src="js/lightworld_locations.js"></script>
+    <script src="js/darkworld_locations.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/control_panel.js"></script>
+    <script src="js/inventory.js"></script>
+    <script>
+      hyruleMap.render();
+    </script>
+  </body>
+</html>
