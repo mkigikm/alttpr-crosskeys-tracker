@@ -103,3 +103,17 @@ li {
 li:hover {
   background-color: green;
 }
+
+#notes {
+  width: 420px;
+}
+
+textarea {
+  background-color: black;
+  color: white;
+  font-family: 'ReturnofGanon';
+  height: 100%;
+  width: 100%;
+  resize: none;
+  font-size: 20px;
+}

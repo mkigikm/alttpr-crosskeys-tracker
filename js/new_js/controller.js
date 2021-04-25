@@ -35,7 +35,7 @@ class Controller {
     this.inventoryView.ybuttonEl.addEventListener('contextmenu', e => this.inventoryRightClick(e.target));
 
     this.controlPanelView.controlSelectionEl.addEventListener('click', e => this.controlSelectionClick(e.target));
-    this.controlPanelView.controlSelectionEl.addEventListener('contextmenu', () => {});
+    this.controlPanelView.controlSelectionEl.addEventListener('contextmenu', e => this.controlSelectionRightClick(e.target));
     for (const el of this.controlPanelView.selectionEls) {
       el.addEventListener('click', e => this.controlPoiClick(e.target));
       el.addEventListener('contextmenu', () => {});
@@ -128,6 +128,15 @@ class Controller {
     }
   }
 
+  controlSelectionRightClick(el) {
+    this.game.controlPanel.toggleNotes();
+    this.render();
+    if (this.game.controlPanel.activeSection() === 'notes') {
+      this.controlPanelView.notesTextEl.focus();
+      this.controlPanelView.notesTextEl.select();
+    }
+  }
+
   controlPoiClick(el) {
     this.clearSelected();
     const name = el.classList[0];
@@ -181,6 +190,8 @@ class Controller {
 
     location.found = isFound;
     this.render();
+    this.controlPanelView.locationInput.focus();
+    this.controlPanelView.locationInput.select();
   }
 
   dungeonMouseEnter(el) {

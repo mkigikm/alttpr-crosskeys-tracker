@@ -22,4 +22,12 @@ class ControlPanelModel {
   clearText() {
     delete this.displayText;
   }
+
+  toggleNotes() {
+    this.showNotes = !this.showNotes;
+  }
+
+  activeSection() {
+    return this.showNotes ? 'notes' : this.selectedControls;
+  }
 }

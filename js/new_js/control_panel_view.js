@@ -98,7 +98,11 @@ class ControlPanelView {
         }
       }
     }
+    this.attachLocationsToDOM(controlSelectionEl);
+    this.attachNotesToDOM();
+  }
 
+  attachLocationsToDOM(controlSelectionEl) {
     const toggleEl = document.createElement('div');
     toggleEl.id = `locations-toggle`;
     controlSelectionEl.appendChild(toggleEl);
@@ -123,20 +127,32 @@ class ControlPanelView {
     rowEl.appendChild(this.foundEl);
   }
 
+  attachNotesToDOM() {
+    const notesEl = document.createElement('div');
+    notesEl.id = 'notes';
+    this.notesTextEl = document.createElement('textarea');
+    notesEl.appendChild(this.notesTextEl);
+    this.controlsEl.appendChild(notesEl);
+  }
+
   render() {
     for (const panel of PANELS) {
       document.getElementById(panel.id).style.display =
-        this.game.controlPanel.selectedControls === panel.id ? 'flex' : 'none';
+        this.game.controlPanel.activeSection() === panel.id ? 'flex' : 'none';
     }
     document.getElementById('locations').style.display =
-      this.game.controlPanel.selectedControls === 'locations' ? 'flex' : 'none';
+      this.game.controlPanel.activeSection() === 'locations' ? 'flex' : 'none';
     for (const selectionEl of this.selectionEls) {
       const name = selectionEl.classList[0];
       selectionEl.classList.toggle('placing2', name === this.game.controlPanel.selected?.name);
       selectionEl.classList.toggle('tracked', this.game.hyruleMap.pois.has(name));
     }
     this.displayEl.textContent = this.game.controlPanel.displayText;
+    this.renderLocationLists();
+    document.getElementById('notes').style.display = this.game.controlPanel.activeSection() === 'notes' ? 'block' : 'none';
+  }
 
+  renderLocationLists() {
     const nameFilter = this.game.controlPanel.locationFilter;
     const outstandingLocations = Array.from(this.game.hyruleMap.locations.values())
           .filter(l => !l.found && l.itemCount && l.name.toLowerCase().search(nameFilter) !== -1)
