@@ -10,18 +10,18 @@ class GameModel {
   }
 
   requirements(location) {
+    const dam = this.hyruleMap.pois.get('dam');
     return !location.requirement || location.requirement.split('-').every((req) => {
       switch (req) {
       case 'pendants':
         return this.dungeons.completedPendants();
       case 'barrier':
-        return inventory.objects.get('sword').level > 1 ||
+        return this.inventory.objects.get('sword').level > 1 ||
           this.inventory.objects.get('cape').level > 0 ||
           this.dungeons.completedCastleTower();
       case 'aga1':
         return this.dungeons.completedCastleTower();
       case 'dam':
-        const dam = this.hyruleMap.pois.get('dam');
         return dam && (dam.world === 'lw' || this.inventory.objects.get('mearl').level > 0);
       case 'smith':
         // TODO access to frog area
@@ -48,9 +48,7 @@ class GameModel {
     while (areas.length > 0) {
       const currentArea = areas.shift();
       for (const edge of edges) {
-        if (edge.a === currentArea &&
-            this.requirements(edge, inventory, dungeons) &&
-            !checkedAreas.has(edge.b)) {
+        if (edge.a === currentArea && this.requirements(edge) && !checkedAreas.has(edge.b)) {
           checkedAreas.add(edge.b);
           areas.push(edge.b);
         }
@@ -63,9 +61,9 @@ class GameModel {
   startingAreas() {
     const areas = [this.hyruleMap.locations.get('Link\'s House').area];
 
-    if (inventory.objects.get('flute').level > 0) {
+    if (this.inventory.objects.get('flute').level > 0) {
       areas.push('dm-south-west');
-      if (inventory.objects.get('glove').level > 1) {
+      if (this.inventory.objects.get('glove').level > 1) {
         areas.push('mire');
       }
     }
@@ -83,7 +81,7 @@ class GameModel {
   currentEdges() {
     const currentEdges = [...this.edges];
 
-    for (const [a, b, color, twoWay] of this.connections) {
+    for (const [a, b, , ,] of this.connections) {
       const aLocation = this.hyruleMap.pois.get(a);
       const bLocation = this.hyruleMap.pois.get(b);
       if (aLocation && bLocation && (this.requirements(aLocation) || this.requirements(bLocation))) {

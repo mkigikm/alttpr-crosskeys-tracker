@@ -9,7 +9,7 @@ class InventoryView {
   }
 
   attachToDOM() {
-    for (const [name, object] of this.game.inventory.objects) {
+    for (const name of this.game.inventory.objects.keys()) {
       const el = document.createElement('div');
       el.className = name;
       if (ABUTTON_ITEMS.includes(name)) {

@@ -15,7 +15,7 @@ class Controller {
     this.dungeonView.dungeonsEl.addEventListener('contextmenu', e => this.dungeonRightClick(e.target));
     for (const el of this.dungeonView.dungeonsEl.childNodes) {
       el.addEventListener('mouseenter', e => this.dungeonMouseEnter(e.target));
-      el.addEventListener('mouseleave', e => this.clearDisplayText());
+      el.addEventListener('mouseleave', () => this.clearDisplayText());
     }
 
     for (const mapEl of [this.hyruleMapView.lwEl, this.hyruleMapView.dwEl]) {
@@ -23,11 +23,11 @@ class Controller {
       mapEl.addEventListener('contextmenu', e => this.hyruleMapRightClick(e.target));
       for (const el of mapEl.getElementsByTagName('div')) {
         el.addEventListener('mouseenter', e => this.hyruleMapMouseEnter(e.target));
-        el.addEventListener('mouseleave', e => this.clearDisplayText());
+        el.addEventListener('mouseleave', () => this.clearDisplayText());
       }
     }
 
-    document.getElementById('portal').addEventListener('click', e => this.portalClick());
+    document.getElementById('portal').addEventListener('click', () => this.portalClick());
 
     this.inventoryView.abuttonEl.addEventListener('click', e => this.inventoryClick(e.target));
     this.inventoryView.ybuttonEl.addEventListener('click', e => this.inventoryClick(e.target));
@@ -35,12 +35,12 @@ class Controller {
     this.inventoryView.ybuttonEl.addEventListener('contextmenu', e => this.inventoryRightClick(e.target));
 
     this.controlPanelView.controlSelectionEl.addEventListener('click', e => this.controlSelectionClick(e.target));
-    this.controlPanelView.controlSelectionEl.addEventListener('contextmenu', e => this.controlSelectionRightClick(e.target));
+    this.controlPanelView.controlSelectionEl.addEventListener('contextmenu', () => this.controlSelectionRightClick());
     for (const el of this.controlPanelView.selectionEls) {
       el.addEventListener('click', e => this.controlPoiClick(e.target));
       el.addEventListener('contextmenu', () => {});
       el.addEventListener('mouseenter', e => this.controlPoiMouseEnter(e.target));
-      el.addEventListener('mouseleave', e => this.clearDisplayText());
+      el.addEventListener('mouseleave', () => this.clearDisplayText());
     }
     this.controlPanelView.outstandingEl.addEventListener('click', e => this.locationClick(e.target, true));
     this.controlPanelView.foundEl.addEventListener('click', e => this.locationClick(e.target, false));
@@ -128,7 +128,7 @@ class Controller {
     }
   }
 
-  controlSelectionRightClick(el) {
+  controlSelectionRightClick() {
     this.game.controlPanel.toggleNotes();
     this.render();
     if (this.game.controlPanel.activeSection() === 'notes') {

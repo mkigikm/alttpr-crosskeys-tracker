@@ -1,4 +1,4 @@
-PANELS = [
+const PANELS = [
   {
     className: 'well',
     id: 'dropdowns',
@@ -104,7 +104,7 @@ class ControlPanelView {
 
   attachLocationsToDOM(controlSelectionEl) {
     const toggleEl = document.createElement('div');
-    toggleEl.id = `locations-toggle`;
+    toggleEl.id = 'locations-toggle';
     controlSelectionEl.appendChild(toggleEl);
 
     const locationEl = document.createElement('div');
@@ -154,26 +154,18 @@ class ControlPanelView {
 
   renderLocationLists() {
     const nameFilter = this.game.controlPanel.locationFilter;
-    const outstandingLocations = Array.from(this.game.hyruleMap.locations.values())
-          .filter(l => !l.found && l.itemCount && l.name.toLowerCase().search(nameFilter) !== -1)
-          .sort((a, b) => {
-            if (a.name > b.name) return 1;
-            if (a.name < b.name) return -1;
-            return 0;
-          });
-    const foundLocations = Array.from(this.game.hyruleMap.locations.values())
-          .filter(l => l.found && l.itemCount && l.name.toLowerCase().search(nameFilter) !== -1)
-          .sort((a, b) => {
-            if (a.name > b.name) return 1;
-            if (a.name < b.name) return -1;
-            return 0;
-          });
 
-    for (const [el, list] of [[this.outstandingEl, outstandingLocations], [this.foundEl, foundLocations]]) {
-      while (el.firstChild) {
-        el.removeChild(el.firstChild);
-      }
-      for (const loc of list) {
+    for (const [el, found] of [[this.outstandingEl, false], [this.foundEl, true]]) {
+      const locations = Array.from(this.game.hyruleMap.locations.values())
+        .filter(l => !!l.found === found && l.itemCount && l.name.toLowerCase().search(nameFilter) !== -1)
+        .sort((a, b) => {
+          if (a.name > b.name) return 1;
+          if (a.name < b.name) return -1;
+          return 0;
+        });
+
+      while (el.firstChild) el.removeChild(el.firstChild);
+      for (const loc of locations) {
         const entryEl = document.createElement('li');
         entryEl.textContent = loc.name;
         el.appendChild(entryEl);
