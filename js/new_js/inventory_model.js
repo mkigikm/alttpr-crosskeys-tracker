@@ -1,18 +1,39 @@
 class InventoryModel {
-  constructor() {
+  constructor(totalInventory) {
     this.objects = new Map();
 
     for (const item of totalInventory) {
-      this.objects.set(item.name, { level: 0, maxLevel: item.progressive ? 2 : 1 });
+      this.objects.set(item.name, { name: item.name, level: 0, maxLevel: item.progressive ? 2 : 1 });
     }
   }
 
   track(name) {
-    const name = el.dataset.name;
     const object = this.objects.get(name);
     if (!object) return;
 
     object.level = (object.level + 1) % (object.maxLevel + 1);
+  }
+
+  select(name) {
+    const object = this.objects.get(name);
+    if (!object) return;
+
+    if (this.selected === object) {
+      return this.unselect();
+    }
+
+    if (this.selected) {
+      this.unselect();
+    }
+    this.selected = object;
+    object.selected = true;
+  }
+
+  unselect() {
+    if (this.selected) {
+      delete this.selected.selected;
+      delete this.selected;
+    }
   }
 
   hasMedallion(medallion) {

@@ -31,7 +31,7 @@ const connections = [
 class Connectors {
   constructor() {
     this.ctxs = new Map();
-    for (const world of ['lightworld', 'darkworld']) {
+    for (const world of ['lw', 'dw']) {
       const canvas = document.getElementById(`${world}-connections`);
       canvas.width = 500;
       canvas.height = 500;

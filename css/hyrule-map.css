@@ -250,6 +250,12 @@ canvas {
   background-position: center 75%;
 }
 
+.key {
+  background-image: url('../images/map/key.png');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 .old-man-main, .old-man-back {
   background-image: url('../images/map/old_man.png');
@@ -289,6 +295,10 @@ canvas {
 
 .boulder {
   background-image: url('../images/map/boulder.png');
+}
+
+.kakariko {
+  background-image: url('../images/map/kakariko.png');
 }
 
 .king-zora {

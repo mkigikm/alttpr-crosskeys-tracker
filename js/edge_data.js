@@ -1,14 +1,14 @@
 const portals = [
   {a: 'lw-main', b: 'dw-village', requirement: 'mearl-hammer-glove'},
-  {a: 'lw-main', b: 'dw-village', requirement: 'mearl-mitts'},
+  {a: 'lw-main', b: 'dw-village', requirement: 'mearl-glove+'},
   {a: 'lw-main', b: 'swamp-palace', requirement: 'mearl-hammer-glove'},
-  {a: 'lw-main', b: 'pyramid', requirement: 'defeat-aga1'},
+  {a: 'lw-main', b: 'pyramid', requirement: 'aga1'},
   {a: 'lw-main', b: 'pyramid', requirement: 'mearl-hammer-glove'},
-  {a: 'luck-fairy-island', b: 'ice-palace', requirement: 'mitts'},
+  {a: 'luck-fairy-island', b: 'ice-palace', requirement: 'glove+'},
 
-  {a: 'dm-south-west', b: 'ddm-west', requirement: 'glove'},
-  {a: 'dm-south-east', b: 'ddm-east', requirement: 'mitts'},
-  {a: 'dm-north-east', b: 'ddm-top', requirement: 'hammer-mitts'},
+  {a: 'dm-south-west', b: 'ddm-west'},
+  {a: 'dm-south-east', b: 'ddm-east', requirement: 'glove+'},
+  {a: 'dm-north-east', b: 'ddm-top', requirement: 'hammer-glove+'},
 ];
 
 const mirrors = [
@@ -41,7 +41,7 @@ const mirrors = [
 const regularEdges = [
   // light world
   {a: 'lw-main', b: 'ascension-entrance', requirement: 'glove'},
-  {a: 'lw-main', b: 'kings-tomb', requirement: 'mitts'},
+  {a: 'lw-main', b: 'kings-tomb', requirement: 'glove+'},
   {a: 'lw-main', b: 'magic-bat', requirement: 'hammer'},
   {a: 'lw-main', b: 'desert-main', requirement: 'book'},
   {a: 'lw-main', b: 'lake-hylia', requirement: 'flippers'},
@@ -49,7 +49,7 @@ const regularEdges = [
 
   {a: 'ascension-entrance', b: 'lw-main'},
   
-  {a: 'kings-tomb', b: 'lw-main', requirement: 'mitts'},
+  {a: 'kings-tomb', b: 'lw-main', requirement: 'glove+'},
 
   {a: 'lake-hylia', b: 'lw-main', requirement: 'flippers'},
   {a: 'lake-hylia', b: 'zora', requirement: 'flippers'},
@@ -85,7 +85,7 @@ const regularEdges = [
   {a: 'dm-north-east', b: 'dm-fairy-top-ledge'},
 
   {a: 'dm-south-east', b: 'dm-south-west', requirement: 'hookshot'},
-  {a: 'dm-south-east', b: 'dm-fairy-bottom-ledge', requirement: 'mitts'},
+  {a: 'dm-south-east', b: 'dm-fairy-bottom-ledge', requirement: 'glove+'},
 
   {a: 'dm-fairy-top-ledge', b: 'dm-fairy-bottom-ledge'},
 
@@ -96,7 +96,7 @@ const regularEdges = [
   // dark world
   {a: 'dw-village', b: 'dw-village-shop', requirement: 'mearl-hammer'},
   {a: 'dw-village', b: 'bumper-cave-bottom', requirement: 'mearl-glove'},
-  {a: 'dw-village', b: 'hammer-pegs', requirement: 'mearl-mitts'},
+  {a: 'dw-village', b: 'hammer-pegs', requirement: 'mearl-glove+'},
   {a: 'dw-village', b: 'swamp-palace'},
   {a: 'dw-village', b: 'dark-potion-shop', requirement: 'mearl-flippers'},
 
@@ -105,9 +105,9 @@ const regularEdges = [
   {a: 'bumper-cave-bottom', b: 'dw-village'},
   {a: 'bumper-cave-top', b: 'dw-village'},
 
-  {a: 'hammer-pegs', b: 'dw-village', requirement: 'mearl-mitts'},
+  {a: 'hammer-pegs', b: 'dw-village', requirement: 'mearl-glove+'},
 
-  {a: 'swamp-palace', b: 'dw-village', requirement: 'mearl-mitts'},
+  {a: 'swamp-palace', b: 'dw-village', requirement: 'mearl-glove+'},
   {a: 'swamp-palace', b: 'stumpy', requirement: 'mearl'},
   {a: 'swamp-palace', b: 'dark-shopping-mall', requirement: 'mearl-flippers'},
   {a: 'swamp-palace', b: 'pyramid', requirement: 'mearl-hammer'},

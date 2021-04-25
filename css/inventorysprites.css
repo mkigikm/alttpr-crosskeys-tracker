@@ -37,6 +37,10 @@ div.level0 {
   filter: brightness(150%)!important;
 }
 
+.placing2 {
+  background-color: limegreen!important;
+}
+
 .bow {
   background: url('../images/items/bow.png');
 }

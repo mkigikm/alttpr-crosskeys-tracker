@@ -1,10 +1,8 @@
 function mod(n, m) {
   return ((n % m) + m) %m;
 }
-const PRIZE_LIST = ['unknown-prize', 'crystal', 'red-crystal', 'blue-pendant', 'green-pendant'];
-
 class DungeonProgressModel {
-  constructor() {
+  constructor(dungeonData) {
     this.dungeons = new Map();
 
     for (const dungeon of dungeonData) {
@@ -24,10 +22,7 @@ class DungeonProgressModel {
 
   track(name, field, diff) {
     const dungeon = this.dungeons.get(name);
-    if (!dungeon) {
-      console.error(`tracking invalid dungeon ${name}`);
-      return;
-    }
+    if (!dungeon) return;
 
     switch (field) {
     case 'completed':
@@ -45,9 +40,17 @@ class DungeonProgressModel {
     case 'items':
       dungeon.items = Math.min(Math.max(dungeon.items - diff, 0), dungeon.maxItems);
       break;
-    default:
-      console.error(`tracking invalid field ${field} for dungeon ${dungeon}`);
     }
+  }
+
+  select(name) {
+    if (name != 'CV') {
+      this.selected = name;
+    }
+  }
+
+  unselect() {
+    delete this.selected;
   }
 
   completedCastleTower() {

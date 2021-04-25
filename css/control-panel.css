@@ -22,6 +22,10 @@
   flex-flow: row wrap;
 }
 
+.one-row > div {
+  height: 120px;
+}
+
 .two-rows > div {
   height: 60px;
 }
@@ -30,6 +34,9 @@
 }
 .two-columns > div {
   width: 50%;
+}
+.three-columns > div {
+  width: 33.333%;
 }
 .four-columns > div{
   width: 25%;
@@ -40,10 +47,13 @@
 .six-columns > div{
   width: 16.667%;
 }
+.eight-columns > div{
+  width: 12.5%;
+}
 .ten-columns > div{
   width: 10%;
 }
-.ten-columns, .six-columns, .four-columns, .two-columns, .five-columns {
+.ten-columns, .eight-columns, .six-columns, .four-columns, .three-columns, .two-columns, .five-columns {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
@@ -63,4 +73,33 @@
 
 #controls .tracked {
   filter: grayscale(100%);
+}
+
+input:focus {
+  outline: none;
+}
+
+input {
+  background-color: transparent;
+  font-family: 'ReturnofGanon';
+  color: white;
+  height: 2em;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+ul {
+  padding-inline-start: 10px;
+  margin: 0;
+  overflow-y: scroll;
+  height: 120px;
+  width: 32%;
+}
+
+li {
+  list-style-type: none;
+}
+
+li:hover {
+  background-color: green;
 }
