@@ -36,16 +36,35 @@ class DungeonProgressView {
     }
   }
 
+  foundDungeon(name) {
+    let poiName = name;
+    if (name === 'DP') {
+      poiName = 'desert-back';
+    }
+    if (name === 'TR') {
+      poiName = 'tr-back';
+    }
+
+    if (name === 'HC') {
+      return this.game.hyruleMap.pois.has('hyrule-west') ||
+        this.game.hyruleMap.pois.has('hyrule-main') ||
+        this.game.hyruleMap.pois.has('hyrule-east');
+    }
+    return this.game.hyruleMap.pois.has(poiName);
+  }
+
   render() {
     this.dungeonsEl.childNodes[0].childNodes[4].textContent = this.game.hyruleMap.caveItems();
     this.dungeonsEl.childNodes[0].childNodes[0].classList.toggle('incomplete', this.game.hyruleMap.caveItems() > 0);
 
     for (const el of this.dungeonsEl.childNodes) {
-      const dungeon = this.game.dungeons.dungeons.get(el.dataset.name);
+      const name = el.dataset.name;
+      const dungeon = this.game.dungeons.dungeons.get(name);
       if (!dungeon) continue;
 
       el.classList.toggle('placing2', el.dataset.name === this.game.dungeons.selected);
-      el.childNodes[0].classList.toggle('incomplete', !dungeon.completed);
+      el.childNodes[0].classList.toggle('incomplete', !dungeon.completed && this.foundDungeon(name));
+      el.childNodes[0].classList.toggle('not-found', !dungeon.completed && !this.foundDungeon(name));
       if (!dungeon.noPrize) {
         el.childNodes[1].className = PRIZE_LIST[dungeon.prize];
         el.childNodes[1].classList.toggle('incomplete', !dungeon.completed);

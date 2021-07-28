@@ -68,7 +68,7 @@ class GameModel {
       }
     }
 
-    for (const startingLoc of ['sanctuary', 'old-man-main']) {
+    for (const startingLoc of ['sanctuary', 'old-man-main', 'old-man-back']) {
       const poi = this.hyruleMap.pois.get(startingLoc);
       if (poi && !areas.includes(poi.area) && (startingLoc === 'sanctuary' || this.hyruleMap.hasOldManItem())) {
         areas.push(poi.area);

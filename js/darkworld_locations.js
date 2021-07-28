@@ -136,7 +136,7 @@ const dwLocations = [
   {
     area: 'pyramid',
     itemCount: 2,
-    name: 'Fairy Queen',
+    name: 'Pyramid Fairy',
     requirement: 'bigbomb',
     x: 450,
     y: 450,

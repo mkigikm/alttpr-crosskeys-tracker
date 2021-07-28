@@ -25,6 +25,10 @@
   filter: brightness(50%);
 }
 
+.not-found {
+  filter: brightness(25%);
+}
+
 .all-keys {
   color: #33FF57;
 }

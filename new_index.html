@@ -31,6 +31,13 @@
        text-align: center;
        width: 500px;
      }
+     #timer {
+       padding-left: 20px;
+       font-size: 60px;
+     }
+     #timer.stopped {
+       filter: brightness(50%);
+     }
     </style>
   </head>
   <body>
@@ -52,6 +59,7 @@
       </div>
       <div id="dungeons"></div>
     </div>
+    <div id="timer"></div>
 
     <script src="js/lightworld_locations.js"></script>
     <script src="js/darkworld_locations.js"></script>
@@ -68,6 +76,8 @@
     <script src="js/new_js/inventory_view.js"></script>
     <script src="js/new_js/control_panel_model.js"></script>
     <script src="js/new_js/control_panel_view.js"></script>
+    <script src="js/new_js/timer_model.js"></script>
+    <script src="js/new_js/timer_view.js"></script>
     <script src="js/new_js/game_model.js"></script>
 
     <script src="js/new_js/controller.js"></script>
@@ -92,6 +102,13 @@
 
      new Controller(dungeonProgressView, hyruleMapView, inventoryView, controlPanelView, game, new Connectors());
      document.getElementsByTagName('body')[0].addEventListener('contextmenu', e => e.preventDefault());
+
+     const timer = new TimerModel();
+     const timerView = new TimerView(document.getElementById('timer'), timer);
+     document.getElementById('timer').addEventListener('click', e => timer.click());
+     setInterval(function() {
+       timerView.render();
+     }, 50);
     </script>
   </body>
 </html>

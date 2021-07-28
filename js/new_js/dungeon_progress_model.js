@@ -29,7 +29,9 @@ class DungeonProgressModel {
       dungeon.completed = !dungeon.completed;
       break;
     case 'prize':
-      dungeon.prize = mod(dungeon.prize + diff, 5);
+      if (!dungeon.noPrize) {
+        dungeon.prize = mod(dungeon.prize + diff, 5);
+      }
       break;
     case 'keys':
       dungeon.keys = Math.min(Math.max(dungeon.keys + diff, 0), dungeon.maxKeys);

@@ -652,15 +652,15 @@ const lwLocations = [
   },
   {
     area: 'spiral-cave-top-ledge',
+    itemCount: 1,
     name: 'Spiral Cave Top',
+    poiName: 'spiral-top',
     x: 700,
     y: 70,
   },
   {
     area: 'dm-south-east',
-    itemCount: 1,
     name: 'Spiral Cave Bottom',
-    poiName: 'spiral-bottom',
     x: 700,
     y: 130,
   },

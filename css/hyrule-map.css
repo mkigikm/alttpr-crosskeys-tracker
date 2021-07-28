@@ -1,7 +1,11 @@
+body {
+  overflow: hidden;
+}
+
 .hyrule-maps > div, canvas {
   height: 500px;
   width: 500px;
-  position: relative
+  position: relative;
 }
 
 canvas {
