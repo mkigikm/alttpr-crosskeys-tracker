@@ -272,8 +272,8 @@ const dwLocations = [
     name: 'Catfish',
     requirement: 'mearl',
     type: 'item',
-    x: 920,
-    y: 160,
+    x: 930,
+    y: 140,
   },
   {
     area: 'ddm-top',
@@ -322,20 +322,20 @@ const dwLocations = [
   {
     area: 'ddm-east',
     name: 'Dark Death Mountain Shop',
-    x: 830,
-    y: 180,
+    x: 860,
+    y: 150,
   },
   {
     area: 'ddm-east',
     name: 'Superbunny Bottom',
-    x: 780,
-    y: 180,
+    x: 800,
+    y: 150,
   },
   {
     area: 'tr-back',
     name: 'Turtle Rock Back',
-    x: 790,
-    y: 130,
+    x: 750,
+    y: 100,
   },
   {
     area: 'tr-connector-ledge',
@@ -346,7 +346,7 @@ const dwLocations = [
   {
     area: 'tr-connector-ledge',
     name: 'Turtle Rock West',
-    x: 750,
+    x: 670,
     y: 80,
   },
   {
