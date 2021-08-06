@@ -46,6 +46,7 @@ class HyruleMapModel {
     if (!location || location.hidden) return;
 
     delete location.item;
+    delete location.key;
     if (location.poi) {
       const foundLocation = this.locationsByPoi.get(location.poi.name);
       if (foundLocation) {
@@ -53,18 +54,32 @@ class HyruleMapModel {
       }
       this.pois.delete(location.poi.name);
       location.poi = null;
+    }
+  }
+
+  cycle(name) {
+    const location = this.locations.get(name);
+    if (!location || location.hidden) return;
+
+    if (location.type === 'drop' || location.type === 'item') {
+      location.key = location.key || 0;
+      location.key = mod(location.key + 1, 5);
     } else if (location.medallionLocked) {
       location.medallion = location.medallion || 0;
       location.medallion = mod(location.medallion + 1, 4);
-    } else if (location.type === 'item') {
-      location.key = location.key || 0;
-      location.key = mod(location.key + 1, 5);
+    } else {
+      if (location.item) {
+        delete location.item;
+      } else {
+        location.key = location.key || 0;
+        location.key = mod(location.key + 1, 9);
+      }
     }
   }
 
   placeItem(name, item) {
     const location = this.locations.get(name);
-    if (!location) return;
+    if (!location || location.medallionLocked) return;
 
     location.item = item.name;
     location.hidden = false;
@@ -72,7 +87,7 @@ class HyruleMapModel {
 
   placePoi(name, poi) {
     const location = this.locations.get(name);
-    if (!location || location.type !== poi.type) return;
+    if (!location || location.type !== poi.type || location.medallionLocked) return;
 
     if (location.poi) {
       this.pois.delete(location.poi.name);
@@ -89,6 +104,7 @@ class HyruleMapModel {
     location.hidden = false;
     delete location.key;
     delete location.medallion;
+    delete location.item;
 
     const foundLocation = this.locationsByPoi.get(poi.name);
     if (foundLocation) {

@@ -1,5 +1,6 @@
 const MEDALLION_LIST = ['bombos', 'ether', 'quake'];
-const KEY_LIST = ['key', 'big-key', 'map', 'rupee'];
+const ITEMDROP_KEY_LIST = ['key', 'big-key', 'map', 'rupee'];
+const ENTRANCE_KEY_LIST = ['chest', 'dark', 'fairy-drop', 'shop'].concat(ITEMDROP_KEY_LIST);
 
 class HyruleMapView {
   constructor(lwEl, dwEl, game) {
@@ -46,13 +47,17 @@ class HyruleMapView {
           } else {
             locEl.classList.add(loc.item);
           }
-        } else if (loc.poi) {
+        } else if (loc.poi && !loc.key) {
           locEl.classList.add(this.locationPoiClass(loc.poi));
         } else if (loc.medallion) {
           locEl.classList.add(MEDALLION_LIST[loc.medallion - 1]);
         } else if (loc.key) {
-          locEl.classList.add(KEY_LIST[loc.key - 1]);
-        } else {
+          if (loc.type === 'drop' || loc.type === 'item') {
+            locEl.classList.add(ITEMDROP_KEY_LIST[loc.key - 1]);
+          } else {
+            locEl.classList.add(ENTRANCE_KEY_LIST[loc.key - 1]);
+          }
+        } else if (!loc.medallionLocked) {
           locEl.classList.add(this.locationClass(loc));
         }
 

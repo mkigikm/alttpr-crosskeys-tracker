@@ -336,6 +336,10 @@ canvas {
   background-image: url('../images/map/potion_shop.png');
 }
 
+.shop {
+  background-image: url('../images/map/shop.png');
+}
+
 .rupee {
   background-image: url('../images/map/rupee.png');
   background-size: 50% auto;

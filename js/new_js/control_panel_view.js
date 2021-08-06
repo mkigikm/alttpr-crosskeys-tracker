@@ -11,8 +11,8 @@ const PANELS = [
     className: 'info',
     id: 'info',
     rows: [
-      ['chest', 'dark', 'potion-shop', 'smith', 'mimic', 'spike'],
-      ['bomb-shop', 'dam', 'sick-kid', 'saha', 'library'],
+      ['potion-shop', 'smith', 'mimic', 'spike'],
+      ['bomb-shop', 'dam', 'sick-kid', 'saha'],
     ],
   },
   {

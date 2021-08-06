@@ -98,7 +98,7 @@ class Controller {
     const locationName = el.dataset.name;
     if (!locationName) return;
 
-    this.game.hyruleMap.untrack(locationName);
+    this.game.hyruleMap.cycle(locationName);
     this.setMapText(locationName);
     this.render();
   }
@@ -182,8 +182,38 @@ class Controller {
     const poi = location.poi;
     if (poi?.unique || poi?.type === 'item') {
       this.game.controlPanel.setDisplayText(`${poi.name} at ${locationName}`);
-    } else if (location.type === 'item' && location.key > 0) {
-      this.game.controlPanel.setDisplayText(`${location.key === 1 ? 'key' : 'big key'} at ${locationName}`);
+    } else if ((location.type === 'item' || location.type === 'drop') && location.key > 0) {
+      let item;
+      if (location.key === 1) {
+        item = 'key';
+      } else if (location.key === 2) {
+        item = 'big key';
+      } else if (location.key === 3) {
+        item = 'map';
+      } else {
+        item = 'rupees';
+      }
+      this.game.controlPanel.setDisplayText(`${item} at ${locationName}`);
+    } else if (location.key > 0) {
+      let item;
+      if (location.key === 1) {
+        item = 'chest';
+      } else if (location.key === 2) {
+        item = 'dark cave';
+      } else if (location.key === 3) {
+        item = 'luck fairy';
+      } else if (location.key === 4) {
+        item = 'shop';
+      } else if (location.key === 5) {
+        item = 'key';
+      } else if (location.key === 6) {
+        item = 'big key';
+      } else if (location.key === 7) {
+        item = 'map';
+      } else {
+        item = 'rupees';
+      }
+      this.game.controlPanel.setDisplayText(`${item} at ${locationName}`);
     } else {
       this.game.controlPanel.setDisplayText(locationName);
     }

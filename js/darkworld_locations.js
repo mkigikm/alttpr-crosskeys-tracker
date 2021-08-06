@@ -191,11 +191,18 @@ const dwLocations = [
   },
   {
     area: 'mire',
-    medallionLocked: true,
     name: 'Misery Mire',
-    requirement: 'mearl-medallion',
+    requirement: 'mearl',
     x: 65,
     y: 820,
+  },
+  {
+    area: 'mire',
+    name: 'Misery Mire Medllion',
+    medallionLocked: true,
+    requirement: 'mearl-medallion-sword',
+    x: 65,
+    y: 760,
   },
   {
     area: 'mire',
@@ -351,10 +358,17 @@ const dwLocations = [
   },
   {
     area: 'ddm-top', // needs to be its own area connected by a leap to ddm-top
-    medallionLocked: true,
     name: 'Turtle Rock Main',
-    requirement: 'mearl-medallion',
+    requirement: 'mearl-hammer-glove+',
     x: 920,
-    y: 40,
+    y: 70,
+  },
+  {
+    area: 'ddm-top', // needs to be its own area connected by a leap to ddm-top
+    medallionLocked: true,
+    name: 'Turtle Rock Medllion',
+    requirement: 'mearl-medallion-sword-hammer-glove+',
+    x: 920,
+    y: 10,
   },
 ];
