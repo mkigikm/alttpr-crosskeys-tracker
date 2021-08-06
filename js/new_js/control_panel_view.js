@@ -157,7 +157,7 @@ class ControlPanelView {
 
     for (const [el, found] of [[this.outstandingEl, false], [this.foundEl, true]]) {
       const locations = Array.from(this.game.hyruleMap.locations.values())
-        .filter(l => !!l.found === found && l.itemCount && l.name.toLowerCase().search(nameFilter) !== -1)
+        .filter(l => !!l.found === found && l.itemCount && (l.name.toLowerCase().indexOf(nameFilter) !== -1 || !nameFilter))
         .sort((a, b) => {
           if (a.name > b.name) return 1;
           if (a.name < b.name) return -1;
