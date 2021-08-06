@@ -48,6 +48,16 @@
   background-image: url('../images/dungeon_items/big_key.png');
 }
 
+.map {
+  background-image: url('../images/map/map.png');
+}
+
+.map-prize {
+  background-image: url('../images/map/map.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .crystal {
   background-image: url('../images/dungeon_items/crystal.png');
   background-size: auto 75%;

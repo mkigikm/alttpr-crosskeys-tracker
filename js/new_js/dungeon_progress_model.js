@@ -30,7 +30,7 @@ class DungeonProgressModel {
       break;
     case 'prize':
       if (!dungeon.noPrize) {
-        dungeon.prize = mod(dungeon.prize + diff, 5);
+        dungeon.prize = mod(dungeon.prize + diff, 6);
       }
       break;
     case 'keys':
@@ -62,7 +62,7 @@ class DungeonProgressModel {
   completedPendants() {
     let finishedPendants = 0;
     for (const dungeon of this.dungeons.values()) {
-      if (dungeon.prize > 2 && dungeon.completed) {
+      if (dungeon.prize >= 3 && dungeon.prize <= 4 && dungeon.completed) {
         finishedPendants += 1;
       }
     }

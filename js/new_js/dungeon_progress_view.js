@@ -1,4 +1,4 @@
-const PRIZE_LIST = ['unknown-prize', 'crystal', 'red-crystal', 'blue-pendant', 'green-pendant'];
+const PRIZE_LIST = ['unknown-prize', 'crystal', 'red-crystal', 'blue-pendant', 'green-pendant', 'map-prize'];
 
 class DungeonProgressView {
   constructor(dungeonsEl, game) {

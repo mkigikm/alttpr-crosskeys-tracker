@@ -57,7 +57,7 @@ class HyruleMapModel {
       location.medallion = mod(location.medallion + 1, 4);
     } else if (location.type === 'item') {
       location.key = location.key || 0;
-      location.key = mod(location.key + 1, 3);
+      location.key = mod(location.key + 1, 5);
     }
   }
 

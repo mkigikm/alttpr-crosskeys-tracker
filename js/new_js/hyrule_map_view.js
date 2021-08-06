@@ -1,5 +1,5 @@
 const MEDALLION_LIST = ['bombos', 'ether', 'quake'];
-const KEY_LIST = ['key', 'big-key'];
+const KEY_LIST = ['key', 'big-key', 'map', 'rupee'];
 
 class HyruleMapView {
   constructor(lwEl, dwEl, game) {
