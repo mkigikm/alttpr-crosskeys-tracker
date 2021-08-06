@@ -108,6 +108,8 @@ class HyruleMapView {
       return 'stumpy';
     case 'Catfish':
       return 'catfish';
+    case 'Skull Woods':
+      return 'gibdo';
     }
 
     if (location.type === 'item') {

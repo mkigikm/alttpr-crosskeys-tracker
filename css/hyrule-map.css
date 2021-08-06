@@ -342,3 +342,10 @@ canvas {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.gibdo {
+  background-image: url('../images/map/gibdo.png');
+  background-size: 50% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
