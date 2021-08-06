@@ -81,6 +81,15 @@ class Connectors {
           ctxB.arc(locationA.x, locationA.y, 30, 0, 2 * Math.PI);
           ctxB.stroke();
         }
+      } else if (locationA || locationB) {
+        const location = locationA || locationB;
+        const ctx = this.ctxs.get(location.world);
+
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.setLineDash([15, 15]);
+        ctx.arc(location.x, location.y, 30, 0, 2 * Math.PI);
+        ctx.stroke();
       }
     }
   }
