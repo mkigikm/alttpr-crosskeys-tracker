@@ -37,7 +37,16 @@ class HyruleMapView {
           continue;
         }
 
-        if (loc.poi) {
+        if (loc.item) {
+          const object = this.game.inventory.objects.get(loc.item);
+          if (loc.item === 'sword') {
+            locEl.classList.add(object.level > 0 ? 'mastersword' : loc.item);
+          } else if (loc.item === 'glove') {
+            locEl.classList.add(object.level > 0 ? 'mitts' : loc.item);
+          } else {
+            locEl.classList.add(loc.item);
+          }
+        } else if (loc.poi) {
           locEl.classList.add(this.locationPoiClass(loc.poi));
         } else if (loc.medallion) {
           locEl.classList.add(MEDALLION_LIST[loc.medallion - 1]);

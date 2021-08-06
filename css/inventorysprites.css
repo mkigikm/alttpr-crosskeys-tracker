@@ -53,6 +53,10 @@ div.level0 {
   background: url('../images/items/master_sword.png');
 }
 
+.mastersword {
+  background: url('../images/items/master_sword.png');
+}
+
 .hookshot {
   background: url('../images/items/hookshot.png');
 }
@@ -131,6 +135,10 @@ div.level0 {
 
 .glove {
   background: url('../images/items/power_glove.png');
+}
+
+.mitts {
+  background: url('../images/items/titans_mitts.png');
 }
 
 .glove.level2 {

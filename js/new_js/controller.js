@@ -21,6 +21,7 @@ class Controller {
     for (const mapEl of [this.hyruleMapView.lwEl, this.hyruleMapView.dwEl]) {
       mapEl.addEventListener('click', e => this.hyruleMapClick(e.target));
       mapEl.addEventListener('contextmenu', e => this.hyruleMapRightClick(e.target));
+      mapEl.addEventListener('dblclick', e => this.hyruleMapDoubleClick(e.target));
       for (const el of mapEl.getElementsByTagName('div')) {
         el.addEventListener('mouseenter', e => this.hyruleMapMouseEnter(e.target));
         el.addEventListener('mouseleave', () => this.clearDisplayText());
@@ -76,7 +77,8 @@ class Controller {
     if (!locationName) return;
 
     if (this.game.inventory.selected) {
-      this.game.hyruleMap.placePoi(locationName, { name: this.game.inventory.selected.name, type: 'item' });
+      // this.game.hyruleMap.placePoi(locationName, { name: this.game.inventory.selected.name, type: 'item' });
+      this.game.hyruleMap.placeItem(locationName, { name: this.game.inventory.selected.name, type: 'item' });
       this.clearSelected();
     } else if (this.game.dungeons.selected) {
       const dungeon = this.translateDungeon(this.game.dungeons.selected);
@@ -93,6 +95,15 @@ class Controller {
   }
 
   hyruleMapRightClick(el) {
+    const locationName = el.dataset.name;
+    if (!locationName) return;
+
+    this.game.hyruleMap.untrack(locationName);
+    this.setMapText(locationName);
+    this.render();
+  }
+
+  hyruleMapDoubleClick(el) {
     const locationName = el.dataset.name;
     if (!locationName) return;
 

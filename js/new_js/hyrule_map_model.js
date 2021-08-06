@@ -45,6 +45,7 @@ class HyruleMapModel {
     const location = this.locations.get(name);
     if (!location || location.hidden) return;
 
+    delete location.item;
     if (location.poi) {
       const foundLocation = this.locationsByPoi.get(location.poi.name);
       if (foundLocation) {
@@ -59,6 +60,14 @@ class HyruleMapModel {
       location.key = location.key || 0;
       location.key = mod(location.key + 1, 5);
     }
+  }
+
+  placeItem(name, item) {
+    const location = this.locations.get(name);
+    if (!location) return;
+
+    location.item = item.name;
+    location.hidden = false;
   }
 
   placePoi(name, poi) {
