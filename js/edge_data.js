@@ -20,6 +20,7 @@ const mirrors = [
   {a: 'swamp-palace', b: 'bombos-ledge', requirement: 'mirror'},
   {a: 'swamp-palace', b: 'race-game', requirement: 'mirror'},
   {a: 'swamp-palace', b: 'cave-45', requirement: 'mirror'},
+  {a: 'ice-palace', b: 'luck-fairy-island', requirement: 'mirror'},
   {a: 'pyramid', b: 'hyrule-balcony', requirement: 'mirror'},
   {a: 'catfish', b: 'zora', requirement: 'mirror'},
   {a: 'pyramid', b: 'hylia-island', requirement: 'mearl-flippers-mirror'},
