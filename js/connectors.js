@@ -50,7 +50,10 @@ class Connectors {
       const locationA = hyruleMap.pois.get(a);
       const locationB = hyruleMap.pois.get(b);
 
-      if (locationA && locationB && !locationA.hidden && !locationB.hidden) {
+      if (locationA && locationB) {
+        if (locationA.hidden || locationB.hidden) {
+          continue;
+        }
         const ctxA = this.ctxs.get(locationA.world);
         const ctxB = this.ctxs.get(locationB.world);
 
@@ -83,13 +86,16 @@ class Connectors {
         }
       } else if (locationA || locationB) {
         const location = locationA || locationB;
-        const ctx = this.ctxs.get(location.world);
+        if (!location.hidden) {
+          const ctx = this.ctxs.get(location.world);
 
-        ctx.beginPath();
-        ctx.strokeStyle = color;
-        ctx.setLineDash([15, 15]);
-        ctx.arc(location.x, location.y, 30, 0, 2 * Math.PI);
-        ctx.stroke();
+          ctx.beginPath();
+          // make this smaller
+          ctx.arc(location.x, location.y, 25, 0, 2 * Math.PI);
+          ctx.strokeStyle = color;
+          ctx.fillStyle = color
+          ctx.fill();
+        }
       }
     }
   }
