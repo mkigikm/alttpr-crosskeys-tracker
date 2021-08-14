@@ -271,6 +271,6 @@ class Controller {
     this.hyruleMapView.render();
     this.inventoryView.render();
     this.controlPanelView.render();
-    this.connectors.draw();
+    // this.connectors.draw();
   }
 }

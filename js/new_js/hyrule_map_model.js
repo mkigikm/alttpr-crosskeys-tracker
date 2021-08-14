@@ -29,9 +29,24 @@ class HyruleMapModel {
       x: location.x / 2 + 10,
       y: location.y / 2 + 10,
     };
-    this.locations.set(location.name, loc);
+    const poi = this.makePoi(location);
+    if (poi || location.type === 'item' || location.itemCount || location.medallionLocked) {
+      this.locations.set(location.name, loc);
+      if (poi) {
+        this.placePoi(location.name, poi);
+      } else if (!location.type && !location.medallionLocked) {
+        this.cycle(location.name);
+      }
+    }
+  }
+
+  makePoi(location) {
     if (location.poiName) {
-      this.locationsByPoi.set(location.poiName, loc);
+      return {
+        name: location.poiName,
+        type: location.type || 'entrance',
+        unique: true,
+      };
     }
   }
 
@@ -39,6 +54,7 @@ class HyruleMapModel {
     const location = this.locations.get(name);
     if (!location) return;
     location.hidden = !location.hidden;
+    location.found = !location.found;
   }
 
   untrack(name) {
@@ -47,6 +63,7 @@ class HyruleMapModel {
 
     delete location.item;
     delete location.key;
+    delete location.found;
     if (location.poi) {
       const foundLocation = this.locationsByPoi.get(location.poi.name);
       if (foundLocation) {

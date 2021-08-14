@@ -48,6 +48,7 @@ const lwLocations = [
   {
     area: 'ascension-entrance',
     name: 'Ascension Entrance',
+    poiName: 'climb-bottom',
     x: 320,
     y: 170,
   },
@@ -281,24 +282,28 @@ const lwLocations = [
   {
     area: 'lw-main',
     name: 'Hyrule Castle Main',
+    poiName: 'hyrule-main',
     x: 480,
     y: 450,
   },
   {
     area: 'hyrule-balcony',
     name: 'Hyrule Castle West',
+    poiName: 'hyrule-west',
     x: 430,
     y: 380,
   },
   {
     area: 'hyrule-balcony',
     name: 'Hyrule Castle East',
+    poiName: 'hyrule-east',
     x: 530,
     y: 380,
   },
   {
     area: 'hyrule-balcony',
     name: 'Castle Tower',
+    poiName: 'CT',
     requirement: 'barrier',
     x: 480,
     y: 390,
@@ -394,24 +399,28 @@ const lwLocations = [
   {
     area: 'desert-main',
     name: 'Desert Palace Main',
+    poiName: 'desert-main',
     x: 65,
     y: 820,
   },
   {
     area: 'desert-west-ledge',
     name: 'Desert Palace West',
+    poiName: 'desert-west',
     x: 10,
     y: 780,
   },
   {
     area: 'desert-east-ledge',
     name: 'Desert Palace East',
+    poiName: 'desert-east',
     x: 120,
     y: 780,
   },
   {
     area: 'desert-back',
     name: 'Desert Palace Back',
+    poiName: 'desert-back',
     x: 65,
     y: 760,
   },
@@ -498,6 +507,7 @@ const lwLocations = [
   {
     area: 'lw-main',
     name: 'Eastern Palace',
+    poiName: 'EP',
     x: 940,
     y: 400,
   },
@@ -533,6 +543,7 @@ const lwLocations = [
   {
     area: 'dm-north-west',
     name: 'Tower of Hera',
+    poiName: 'TH',
     x: 540,
     y: 10,
   },
@@ -565,7 +576,7 @@ const lwLocations = [
   },
   {
     area: 'dm-south-west',
-    name: 'Return Cave Enterance',
+    name: 'Return Cave Entrance',
     x: 380,
     y: 100,
   },
@@ -578,6 +589,7 @@ const lwLocations = [
   {
     area: 'dm-south-west',
     name: 'Old Man West',
+    poiName: 'old-man-main',
     x: 460,
     y: 200,
   },
@@ -592,6 +604,7 @@ const lwLocations = [
   {
     area: 'dm-south-west',
     name: 'Ascension Cave Exit',
+    poiName: 'climb-top',
     x: 380,
     y: 150,
   },
@@ -605,6 +618,7 @@ const lwLocations = [
   {
     area: 'dm-north-east',
     name: 'Paradox Cave Top',
+    poiName: 'paradox-exit',
     x: 840,
     y: 20,
   },

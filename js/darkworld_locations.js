@@ -9,6 +9,7 @@ const dwLocations = [
   {
     area: 'dw-village',
     name: 'Skull Woods',
+    poiName: 'SW',
     x: 160,
     y: 150,
   },
@@ -65,6 +66,7 @@ const dwLocations = [
   {
     area: 'dw-village',
     name: 'Thieves\' Town ',
+    poiName: 'TT',
     requirement: 'mearl',
     x: 120,
     y: 450,
@@ -166,6 +168,7 @@ const dwLocations = [
   {
     area: 'swamp-palace',
     name: 'Bomb Shop',
+    poiName: 'bomb-shop',
     x: 530,
     y: 670,
   },
@@ -180,6 +183,7 @@ const dwLocations = [
   {
     area: 'swamp-palace',
     name: 'Swamp Palace',
+    poiName: 'SP',
     x: 450,
     y: 920,
   },
@@ -192,6 +196,7 @@ const dwLocations = [
   {
     area: 'mire',
     name: 'Misery Mire',
+    poiName: 'MM',
     requirement: 'mearl',
     x: 65,
     y: 820,
@@ -226,6 +231,7 @@ const dwLocations = [
   {
     area: 'ice-palace',
     name: 'Ice Palace',
+    poiName: 'IP',
     x: 770,
     y: 840,
   },
@@ -270,6 +276,7 @@ const dwLocations = [
   {
     area: 'pyramid',
     name: 'Palace of Darkness',
+    poiName: 'PD',
     requirement: 'mearl',
     x: 940,
     y: 400,
@@ -285,6 +292,7 @@ const dwLocations = [
   {
     area: 'ddm-top',
     name: 'Gannon\'s Tower',
+    poiName: 'GT',
     requirement: 'crystals',
     x: 540,
     y: 10,
@@ -306,6 +314,7 @@ const dwLocations = [
   {
     area: 'ddm-floating-island',
     name: 'Hookshot Exit',
+    poiName: 'hookshot-cave-exit',
     x: 720,
     y: 10,
   },
@@ -335,30 +344,35 @@ const dwLocations = [
   {
     area: 'ddm-east',
     name: 'Superbunny Bottom',
+    poiName: 'superbunny-bottom',
     x: 800,
     y: 150,
   },
   {
     area: 'tr-back',
     name: 'Turtle Rock Back',
+    poiName: 'tr-back',
     x: 750,
     y: 100,
   },
   {
     area: 'tr-connector-ledge',
     name: 'Turtle Rock East',
+    poiName: 'tr-east',
     x: 830,
     y: 80,
   },
   {
     area: 'tr-connector-ledge',
     name: 'Turtle Rock West',
+    poiName: 'tr-west',
     x: 670,
     y: 80,
   },
   {
     area: 'ddm-top', // needs to be its own area connected by a leap to ddm-top
     name: 'Turtle Rock Main',
+    poiName: 'tr-main',
     requirement: 'mearl-hammer-glove+',
     x: 920,
     y: 70,
