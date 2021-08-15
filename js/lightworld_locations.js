@@ -47,6 +47,7 @@ const lwLocations = [
   },
   {
     area: 'ascension-entrance',
+    hidden: true,
     name: 'Ascension Entrance',
     poiName: 'climb-bottom',
     x: 320,
@@ -75,6 +76,7 @@ const lwLocations = [
   {
     area: 'lw-main',
     name: 'Sanctuary',
+    poiName: 'sanctuary',
     requirement: 'glove',
     type: 'drop',
     x: 440,
@@ -288,6 +290,7 @@ const lwLocations = [
   },
   {
     area: 'hyrule-balcony',
+    hidden: true,
     name: 'Hyrule Castle West',
     poiName: 'hyrule-west',
     x: 430,
@@ -295,6 +298,7 @@ const lwLocations = [
   },
   {
     area: 'hyrule-balcony',
+    hidden: true,
     name: 'Hyrule Castle East',
     poiName: 'hyrule-east',
     x: 530,
@@ -405,6 +409,7 @@ const lwLocations = [
   },
   {
     area: 'desert-west-ledge',
+    hidden: true,
     name: 'Desert Palace West',
     poiName: 'desert-west',
     x: 10,
@@ -412,6 +417,7 @@ const lwLocations = [
   },
   {
     area: 'desert-east-ledge',
+    hidden: true,
     name: 'Desert Palace East',
     poiName: 'desert-east',
     x: 120,
@@ -603,6 +609,7 @@ const lwLocations = [
   },
   {
     area: 'dm-south-west',
+    hidden: true,
     name: 'Ascension Cave Exit',
     poiName: 'climb-top',
     x: 380,
@@ -618,13 +625,14 @@ const lwLocations = [
   {
     area: 'dm-north-east',
     name: 'Paradox Cave Top',
+    hidden: true,
     poiName: 'paradox-exit',
     x: 840,
     y: 20,
   },
   {
     area: 'dm-south-east',
-    itemCount: 5,
+    itemCount: 7,
     name: 'Paradox Cave Middle',
     poiName: 'paradox-5items',
     x: 860,
@@ -632,7 +640,7 @@ const lwLocations = [
   },
   {
     area: 'dm-south-east',
-    itemCount: 2,
+    hidden: true,
     name: 'Paradox Cave Bottom',
     poiName: 'paradox-2items',
     x: 830,

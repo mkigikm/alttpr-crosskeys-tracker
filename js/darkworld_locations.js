@@ -21,13 +21,19 @@ const dwLocations = [
   },
   {
     area: 'bumper-cave-bottom',
+    hidden: true,
     name: 'Bumper Cave Bottom',
+    poiName: 'bumper-cave-entrance',
+    requirement: 'mearl-cape',
     x: 320,
     y: 170,
   },
   {
     area: 'bumper-cave-top',
+    hidden: true,
     name: 'Bumper Cave Top',
+    poiName: 'bumper-cave-exit',
+    requirement: 'mearl-cape',
     x: 310,
     y: 120,
   },
@@ -146,6 +152,7 @@ const dwLocations = [
   {
     area: 'pyramid',
     name: 'Pyramid',
+    poiName: 'ganon',
     requirement: 'gt',
     type: 'drop',
     x: 480,
@@ -313,6 +320,7 @@ const dwLocations = [
   },
   {
     area: 'ddm-floating-island',
+    hidden: true,
     name: 'Hookshot Exit',
     poiName: 'hookshot-cave-exit',
     x: 720,
@@ -343,6 +351,7 @@ const dwLocations = [
   },
   {
     area: 'ddm-east',
+    hidden: true,
     name: 'Superbunny Bottom',
     poiName: 'superbunny-bottom',
     x: 800,
@@ -357,6 +366,7 @@ const dwLocations = [
   },
   {
     area: 'tr-connector-ledge',
+    hidden: true,
     name: 'Turtle Rock East',
     poiName: 'tr-east',
     x: 830,
@@ -364,6 +374,7 @@ const dwLocations = [
   },
   {
     area: 'tr-connector-ledge',
+    hidden: true,
     name: 'Turtle Rock West',
     poiName: 'tr-west',
     x: 670,

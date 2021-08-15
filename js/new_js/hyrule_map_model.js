@@ -24,6 +24,7 @@ class HyruleMapModel {
       name: location.name,
       medallionLocked: location.medallionLocked,
       requirement: location.requirement,
+      showOnMap: !location.hidden,
       type: location.type || 'entrance',
       world: world,
       x: location.x / 2 + 10,
