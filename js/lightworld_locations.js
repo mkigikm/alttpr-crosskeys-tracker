@@ -249,13 +249,17 @@ const lwLocations = [
   },
   {
     area: 'lw-main',
+    hidden: true,
     name: 'Brother\'s Right',
+    poiName: 'brothers-east',
     x: 150,
     y: 700,
   },
   {
     area: 'race-game',
+    hidden: true,
     name: 'Brother\'s Left',
+    poiName: 'brothers-west',
     x: 100,
     y: 700,
   },
