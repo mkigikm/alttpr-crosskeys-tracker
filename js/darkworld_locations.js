@@ -359,6 +359,7 @@ const dwLocations = [
   },
   {
     area: 'tr-back',
+    hidden: true,
     name: 'Turtle Rock Back',
     poiName: 'tr-back',
     x: 750,
