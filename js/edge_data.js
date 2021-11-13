@@ -33,6 +33,9 @@ const mirrors = [
   {a: 'tr-connector-ledge', b: 'spiral-cave-top-ledge', requirement: 'mirror'},
   {a: 'tr-back', b: 'dm-fairy-top-ledge', requirement: 'mirror'},
   {a: 'ddm-floating-island', b: 'floating-island', requirement: 'mirror'},
+  {a: 'ddm-east', b: 'dm-south-east', requirement: 'mirror'},
+  // could make a unique area for the bush blocked ddm area that you mirror from
+  {a: 'ddm-east', b: 'dm-fairy-bottom-ledge', requirement: 'mearl-mirror'},
 
   {a: 'mire', b: 'checkerboard-ledge', requirement: 'mirror'},
   {a: 'mire', b: 'desert-west-ledge', requirement: 'mirror'},
