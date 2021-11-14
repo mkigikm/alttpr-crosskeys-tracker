@@ -584,7 +584,7 @@ const lwLocations = [
   {
     area: 'dm-south-west',
     name: 'Old Man Item',
-    requirement: 'lamp',
+    requirement: 'lamp-climb',
     type: 'item',
     x: 410,
     y: 200,
@@ -592,6 +592,7 @@ const lwLocations = [
   {
     area: 'dm-south-west',
     name: 'Ascension Cave Exit',
+    poiName: 'climb-top',
     x: 380,
     y: 150,
   },

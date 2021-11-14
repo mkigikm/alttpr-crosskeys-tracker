@@ -34,6 +34,8 @@ class GameModel {
         return this.inventory.hasMedallion(location.medallion);
       case 'crystals':
         return this.dungeons.completedCrystals();
+      case 'climb':
+        return hyruleMap.pois.has('climb-top');
       default:
         return this.inventory.objects.get(req.replace('+', '')).level > (req.endsWith('+') ? 1 : 0);
       }
