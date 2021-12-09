@@ -35,6 +35,7 @@ const mirrors = [
   {a: 'ddm-floating-island', b: 'floating-island', requirement: 'mirror'},
   {a: 'ddm-east', b: 'dm-south-east', requirement: 'mirror'},
   // could make a unique area for the bush blocked ddm area that you mirror from
+  // TODO fix this, it made bottom fairy in logic w/o mearl
   {a: 'ddm-east', b: 'dm-fairy-bottom-ledge', requirement: 'mearl-mirror'},
 
   {a: 'mire', b: 'checkerboard-ledge', requirement: 'mirror'},

@@ -565,7 +565,7 @@ const lwLocations = [
   },
   {
     area: 'dm-south-west',
-    name: 'Return Cave Enterance',
+    name: 'Return Cave Entrance',
     x: 380,
     y: 100,
   },

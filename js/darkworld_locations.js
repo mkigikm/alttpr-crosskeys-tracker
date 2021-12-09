@@ -198,7 +198,7 @@ const dwLocations = [
   },
   {
     area: 'mire',
-    name: 'Misery Mire Medllion',
+    name: 'Misery Mire Medallion',
     medallionLocked: true,
     requirement: 'mearl-medallion-sword',
     x: 65,
@@ -313,7 +313,6 @@ const dwLocations = [
     area: 'ddm-top',
     itemCount: 4,
     name: 'Hookshot Entrance',
-    poiName: 'hookshot-cave-entrance',
     requirement: 'mearl-glove',
     x: 780,
     y: 20,
@@ -366,7 +365,7 @@ const dwLocations = [
   {
     area: 'ddm-top', // needs to be its own area connected by a leap to ddm-top
     medallionLocked: true,
-    name: 'Turtle Rock Medllion',
+    name: 'Turtle Rock Medallion',
     requirement: 'mearl-medallion-sword-hammer-glove+',
     x: 920,
     y: 10,
