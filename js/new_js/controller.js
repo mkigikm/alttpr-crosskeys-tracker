@@ -64,7 +64,7 @@ class Controller {
     if (!dungeonName) return;
 
     if (field === 'completed') {
-      this.clearSelected();
+      this.clearSelected('dungeons');
       this.game.dungeons.select(dungeonName);
     } else {
       this.game.dungeons.track(dungeonName, field, -1);
@@ -85,6 +85,7 @@ class Controller {
       this.game.hyruleMap.placePoi(locationName, { name: dungeon, type: 'entrance', unique: true });
       this.clearSelected();
     } else if (this.game.controlPanel.selected) {
+      console.log(this.game.controlPanel.selected);
       this.game.hyruleMap.placePoi(locationName, this.game.controlPanel.selected);
       this.clearSelected();
     } else {
@@ -124,7 +125,7 @@ class Controller {
   }
 
   inventoryRightClick(el) {
-    this.clearSelected();
+    this.clearSelected('inventory');
     this.game.inventory.select(el.classList[0]);
     this.render();
   }
@@ -149,7 +150,7 @@ class Controller {
   }
 
   controlPoiClick(el) {
-    this.clearSelected();
+    this.clearSelected('pois');
     const name = el.classList[0];
     // TODO make less shitty
     const type = ['lumberjack-drop', 'sanctuary', 'fairy-drop', 'hideout','well', 'magic-bat', 'uncle', 'ganon'].includes(name) ? 'drop' : 'entrance';
@@ -255,10 +256,10 @@ class Controller {
     return dungeon;
   }
 
-  clearSelected() {
-    this.game.inventory.unselect();
-    this.game.dungeons.unselect();
-    this.game.controlPanel.unselect();
+  clearSelected(skip) {
+    skip != 'inventory' && this.game.inventory.unselect();
+    skip != 'dungeons' && this.game.dungeons.unselect();
+    skip != 'pois' && this.game.controlPanel.unselect();
   }
 
   clearDisplayText() {

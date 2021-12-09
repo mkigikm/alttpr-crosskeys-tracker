@@ -8,7 +8,11 @@ class ControlPanelModel {
   }
 
   select(selection) {
-    this.selected = selection;
+    if (this.selected && this.selected.name === selection.name) {
+      this.unselect();
+    } else {
+      this.selected = selection;
+    }
   }
 
   unselect() {

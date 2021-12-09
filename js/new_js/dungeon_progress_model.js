@@ -47,7 +47,11 @@ class DungeonProgressModel {
 
   select(name) {
     if (name != 'CV') {
-      this.selected = name;
+      if (this.selected === name) {
+        this.unselect();
+      } else {
+        this.selected = name;
+      }
     }
   }
 
