@@ -1,5 +1,5 @@
 class GameModel {
-  constructor(hyruleMap, inventory, dungeons, controlPanel, edges, connections) {
+  constructor(hyruleMap, inventory, dungeons, controlPanel, edges, connections, connectors) {
     this.hyruleMap = hyruleMap;
     this.inventory = inventory;
     this.dungeons = dungeons;
@@ -7,6 +7,7 @@ class GameModel {
     this.controlPanel = controlPanel;
     this.edges = edges;
     this.connections = connections;
+    this.connectors = connectors;
   }
 
   requirements(location) {
@@ -70,9 +71,9 @@ class GameModel {
       }
     }
 
-    for (const startingLoc of ['sanctuary', 'old-man-main', 'old-man-back']) {
+    for (const startingLoc of ['sanctuary-entrance', 'old-man-main', 'old-man-back']) {
       const poi = this.hyruleMap.pois.get(startingLoc);
-      if (poi && !areas.includes(poi.area) && (startingLoc === 'sanctuary' || this.hyruleMap.hasOldManItem())) {
+      if (poi && !areas.includes(poi.area) && (startingLoc === 'sanctuary-entrance' || this.hyruleMap.hasOldManItem())) {
         areas.push(poi.area);
       }
     }
@@ -90,6 +91,10 @@ class GameModel {
         currentEdges.push({a: aLocation.area, b: bLocation.area});
         currentEdges.push({b: aLocation.area, a: bLocation.area});
       }
+    }
+    for (const [aLocation, bLocation, ,] of this.connectors.connections) {
+      currentEdges.push({a: aLocation.area, b: bLocation.area});
+      currentEdges.push({b: aLocation.area, a: bLocation.area});
     }
 
     return currentEdges;

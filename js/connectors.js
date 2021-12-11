@@ -39,6 +39,13 @@ class Connectors {
       this.ctxs.set(world, canvas.getContext('2d'));
       this.ctxs.get(world).lineWidth = 5;
     }
+    this.connections = [];
+  }
+
+  addConnection(a, b, color) {
+    if (a !== b) {
+      this.connections.push([a, b, color || 'orange', true, true]);
+    }
   }
 
   draw() {
@@ -46,9 +53,29 @@ class Connectors {
       ctx.clearRect(0, 0, 500, 500);
     }
 
-    for (const [a, b, color, twoWay] of connections) {
-      const locationA = hyruleMap.pois.get(a);
-      const locationB = hyruleMap.pois.get(b);
+    if (hyruleMap.connecting) {
+      const location = hyruleMap.connecting;
+      const ctx = this.ctxs.get(location.world);
+      ctx.beginPath();
+      ctx.arc(location.x, location.y, 25, 0, 2 * Math.PI);
+      ctx.strokeStyle = 'yellow';
+      ctx.stroke();
+    }
+
+    for (const [a, b, connectionColor, twoWay, insanity] of this.connections) {
+      let locationA = a;
+      let locationB = b;
+      if (!insanity) {
+        locationA = hyruleMap.pois.get(a);
+        locationB = hyruleMap.pois.get(b);
+      }
+      let color = connectionColor;
+      if (locationA.name === this.highlightLocation) {
+        color = 'red';
+      }
+      if (locationB.name === this.highlightLocation) {
+        color = 'limegreen';
+      }
 
       if (locationA && locationB) {
         if (locationA.hidden || locationB.hidden) {
@@ -100,5 +127,3 @@ class Connectors {
     }
   }
 }
-
-const connectors = new Connectors();

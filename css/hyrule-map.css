@@ -39,6 +39,36 @@ canvas {
   z-index: 2;
 }
 
+#primary-connection {
+  position: absolute;
+  left: 400px;
+  top: 450px;
+  width: 40px;
+  height: 40px;
+  background-image: url('../images/map/hookshot_cave.png');
+  background-color: black;
+  background-size: cover;
+  image-rendering: pixelated;
+  z-index: 2;
+}
+
+#secondary-connection {
+  position: absolute;
+  left: 450px;
+  top: 450px;
+  width: 40px;
+  height: 40px;
+  background-image: url('../images/map/elder.png');
+  background-color: black;
+  background-size: cover;
+  image-rendering: pixelated;
+  z-index: 2;
+}
+
+.connecting {
+  outline: 5px solid yellow;
+}
+
 .location {
   position: absolute;
   width: 19px;
@@ -82,35 +112,35 @@ canvas {
   background: rgba(0, 0, 0, 0.3)!important;
 }
 
-.magic-bat {
+.magic-bat, .magic-bat-entrance {
   background-image: url('../images/map/magic_bat.png');
 }
 
-.ganon {
+.ganon, .ganon-entrance {
   background-image: url('../images/map/ganon.png');
 }
 
-.uncle {
+.uncle, .uncle-entrance {
   background-image: url('../images/map/uncle.png');
 }
 
-.sanctuary {
+.sanctuary, .sanctuary-entrance {
   background-image: url('../images/map/sanctuary.png');
 }
 
-.hideout {
+.hideout, .hideout-entrance {
   background-image: url('../images/map/hideout.png');
 }
 
-.fairy-drop {
+.fairy-drop, .fairy-drop-entrance {
   background-image: url('../images/map/fairy.png');
 }
 
-.lumberjack-drop {
+.lumberjack-drop, .lumberjack-drop-entrance {
   background-image: url('../images/map/lumberjacks.png');
 }
 
-.well {
+.well, .well-entrance {
   background-image: url('../images/map/well.png');
 }
 

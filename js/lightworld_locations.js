@@ -38,12 +38,24 @@ const lwLocations = [
   },
   {
     area: 'lw-main',
+    name: 'Lumberjack Exit',
+    x: 260,
+    y: 20,
+  },
+  {
+    area: 'lw-main',
     itemCount: 1,
     name: 'Hideout',
     poiName: 'hideout',
     type: 'drop',
     x: 160,
     y: 150,
+  },
+  {
+    area: 'lw-main',
+    name: 'Hideout Exit',
+    x: 160,
+    y: 200,
   },
   {
     area: 'ascension-entrance',
@@ -80,6 +92,12 @@ const lwLocations = [
     y: 260,
   },
   {
+    area: 'lw-main',
+    name: 'Sanctuary Exit',
+    x: 440,
+    y: 310,
+  },
+  {
     area: 'graveyard-ledge',
     itemCount: 1,
     name: 'Graveyard Ledge',
@@ -103,6 +121,12 @@ const lwLocations = [
   },
   {
     area: 'lw-main',
+    name: 'Fairy Exit',
+    x: 700,
+    y: 270,
+  },
+  {
+    area: 'lw-main',
     itemCount: 1,
     name: 'Potion Shop',
     poiName: 'potion-shop',
@@ -117,6 +141,12 @@ const lwLocations = [
     type: 'drop',
     x: 10,
     y: 380,
+  },
+  {
+    area: 'lw-main',
+    name: 'Well Exit',
+    x: 10,
+    y: 330,
   },
   {
     area: 'lw-main',
@@ -232,6 +262,12 @@ const lwLocations = [
   },
   {
     area: 'lw-main',
+    name: 'Magic Bat Exit',
+    x: 270,
+    y: 550,
+  },
+  {
+    area: 'lw-main',
     itemCount: 1,
     name: 'Library',
     poiName: 'library',
@@ -311,6 +347,12 @@ const lwLocations = [
     type: 'drop',
     x: 580,
     y: 420,
+  },
+  {
+    area: 'lw-main',
+    name: 'Secret Passage Exit',
+    x: 580,
+    y: 470,
   },
   {
     area: 'lw-main',

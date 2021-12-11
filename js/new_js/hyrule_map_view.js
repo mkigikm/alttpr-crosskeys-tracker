@@ -1,6 +1,7 @@
 const MEDALLION_LIST = ['bombos', 'ether', 'quake'];
-const ITEMDROP_KEY_LIST = ['key', 'big-key', 'map', 'rupee'];
-const ENTRANCE_KEY_LIST = ['chest', 'dark', 'fairy-drop', 'shop'].concat(ITEMDROP_KEY_LIST);
+const ITEM_KEY_LIST = ['key', 'big-key', 'map', 'rupee'];
+const DROP_KEY_LIST = ['key', 'big-key', 'map', 'rupee', 'gibdo'];
+const ENTRANCE_KEY_LIST = ['chest', 'dark', 'fairy-drop', 'shop'].concat(DROP_KEY_LIST);
 
 class HyruleMapView {
   constructor(lwEl, dwEl, game) {
@@ -52,8 +53,10 @@ class HyruleMapView {
         } else if (loc.medallion) {
           locEl.classList.add(MEDALLION_LIST[loc.medallion - 1]);
         } else if (loc.key) {
-          if (loc.type === 'drop' || loc.type === 'item') {
-            locEl.classList.add(ITEMDROP_KEY_LIST[loc.key - 1]);
+          if (loc.type === 'drop') {
+            locEl.classList.add(DROP_KEY_LIST[loc.key - 1]);
+          } else if (loc.type === 'item') {
+            locEl.classList.add(ITEM_KEY_LIST[loc.key - 1]);
           } else {
             locEl.classList.add(ENTRANCE_KEY_LIST[loc.key - 1]);
           }
@@ -122,7 +125,9 @@ class HyruleMapView {
       return 'stumpy';
     case 'Catfish':
       return 'catfish';
-    case 'Skull Woods':
+    case 'Skull Woods East':
+    case 'Skull Woods Central':
+    case 'Skull Woods West':
       return 'gibdo';
     }
 

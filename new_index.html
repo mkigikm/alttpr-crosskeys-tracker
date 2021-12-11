@@ -49,6 +49,8 @@
         <canvas id="dw-connections" width="500" height="500"></canvas>
       </div>
       <div id="portal"></div>
+      <div id="primary-connection"></div>
+      <div id="secondary-connection"></div>
     </div>
     <div id="display"></div>
     <div id="controls"></div>
@@ -83,11 +85,12 @@
     <script src="js/new_js/controller.js"></script>
 
     <script>
+     const connectors = new Connectors();
      const dungeonProgress = new DungeonProgressModel(dungeonData);
-     const hyruleMap = new HyruleMapModel(lwLocations, dwLocations);
+     const hyruleMap = new HyruleMapModel(lwLocations, dwLocations, connectors);
      const inventory = new InventoryModel(totalInventory);
      const controlPanel = new ControlPanelModel();
-     const game = new GameModel(hyruleMap, inventory, dungeonProgress, controlPanel, edges, connections);
+     const game = new GameModel(hyruleMap, inventory, dungeonProgress, controlPanel, edges, connections, connectors);
 
      const dungeonProgressView = new DungeonProgressView(document.getElementById('dungeons'), game);
      const hyruleMapView = new HyruleMapView(
@@ -100,7 +103,7 @@
        document.getElementById('controls'), document.getElementById('display'), game
      );
 
-     new Controller(dungeonProgressView, hyruleMapView, inventoryView, controlPanelView, game, new Connectors());
+     new Controller(dungeonProgressView, hyruleMapView, inventoryView, controlPanelView, game, connectors);
      document.getElementsByTagName('body')[0].addEventListener('contextmenu', e => e.preventDefault());
 
      const timer = new TimerModel();

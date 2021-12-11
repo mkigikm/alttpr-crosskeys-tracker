@@ -29,6 +29,8 @@ class Controller {
     }
 
     document.getElementById('portal').addEventListener('click', () => this.portalClick());
+    document.getElementById('primary-connection').addEventListener('click', () => this.primaryConnectionClick());
+    document.getElementById('secondary-connection').addEventListener('click', () => this.secondaryConnectionClick());
 
     this.inventoryView.abuttonEl.addEventListener('click', e => this.inventoryClick(e.target));
     this.inventoryView.ybuttonEl.addEventListener('click', e => this.inventoryClick(e.target));
@@ -85,9 +87,19 @@ class Controller {
       this.game.hyruleMap.placePoi(locationName, { name: dungeon, type: 'entrance', unique: true });
       this.clearSelected();
     } else if (this.game.controlPanel.selected) {
-      console.log(this.game.controlPanel.selected);
       this.game.hyruleMap.placePoi(locationName, this.game.controlPanel.selected);
       this.clearSelected();
+    } else if (this.primaryConnectionMode) {
+      this.game.hyruleMap.addConnector(locationName);
+      if (!this.game.hyruleMap.connecting) {
+        console.log('connection made, leaving mode');
+        delete this.primaryConnectionMode;
+      }
+    } else if (this.secondaryConnectionMode) {
+      this.game.hyruleMap.addSecondaryConnector(locationName);
+      if (!this.game.hyruleMap.connecting) {
+        delete this.secondaryConnectionMode;
+      }
     } else {
       this.game.hyruleMap.track(locationName);
     }
@@ -115,6 +127,20 @@ class Controller {
 
   portalClick() {
     this.game.hyruleMap.enterPortal();
+    this.render();
+  }
+
+  primaryConnectionClick() {
+    const nextValue = !this.primaryConnectionMode;
+    this.clearSelected();
+    this.primaryConnectionMode = nextValue;
+    this.render();
+  }
+
+  secondaryConnectionClick() {
+    const nextValue = !this.secondaryConnectionMode;
+    this.clearSelected();
+    this.secondaryConnectionMode = nextValue;
     this.render();
   }
 
@@ -175,6 +201,7 @@ class Controller {
 
   hyruleMapMouseEnter(el) {
     this.setMapText(el.dataset.name);
+    this.connectors.highlightLocation = el.dataset.name;
     this.render();
   }
 
@@ -260,10 +287,14 @@ class Controller {
     skip != 'inventory' && this.game.inventory.unselect();
     skip != 'dungeons' && this.game.dungeons.unselect();
     skip != 'pois' && this.game.controlPanel.unselect();
+    delete this.game.hyruleMap.connecting;
+    delete this.primaryConnectionMode;
+    delete this.secondaryConnectionMode;
   }
 
   clearDisplayText() {
     this.game.controlPanel.setDisplayText('');
+    delete this.connectors.highlightLocation;
     this.render();
   }
 
@@ -273,5 +304,14 @@ class Controller {
     this.inventoryView.render();
     this.controlPanelView.render();
     this.connectors.draw();
+
+    document.getElementById('primary-connection').classList.remove('connecting');
+    document.getElementById('secondary-connection').classList.remove('connecting');
+    if (this.primaryConnectionMode) {
+      document.getElementById('primary-connection').classList.add('connecting');
+    }
+    if (this.secondaryConnectionMode) {
+      document.getElementById('secondary-connection').classList.add('connecting');
+    }
   }
 }

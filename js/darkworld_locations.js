@@ -1,6 +1,6 @@
 const dwLocations = [
   {
-    area: 'dw-village',
+    area: 'sw-west',
     name: 'Mothula',
     requirement: 'mearl-firerod',
     x: 30,
@@ -8,9 +8,49 @@ const dwLocations = [
   },
   {
     area: 'dw-village',
-    name: 'Skull Woods',
+    name: 'Skull Woods East',
     x: 160,
     y: 150,
+  },
+  {
+    area: 'dw-village',
+    name: 'Skull Woods Central',
+    x: 100,
+    y: 150,
+  },
+  {
+    area: 'sw-west',
+    name: 'Skull Woods West',
+    x: 40,
+    y: 150,
+  },
+  {
+    area: 'dw-village',
+    name: 'Skull Woods 1',
+    type: 'drop',
+    x: 160,
+    y: 200,
+  },
+  {
+    area: 'dw-village',
+    name: 'Skull Woods 2',
+    type: 'drop',
+    x: 100,
+    y: 200,
+  },
+  {
+    area: 'dw-village',
+    name: 'Skull Woods 3',
+    type: 'drop',
+    x: 160,
+    y: 100,
+  },
+  {
+    area: 'sw-west',
+    name: 'Skull Woods 4',
+    type: 'drop',
+    x: 40,
+    y: 100,
   },
   {
     area: 'dw-village',
@@ -148,6 +188,12 @@ const dwLocations = [
     type: 'drop',
     x: 480,
     y: 390,
+  },
+  {
+    area: 'pyramid',
+    name: 'Pyramid Exit',
+    x: 510,
+    y: 440,
   },
   {
     area: 'pyramid',

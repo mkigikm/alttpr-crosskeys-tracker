@@ -1,6 +1,7 @@
 class HyruleMapModel {
-  constructor(lwLocations, dwLocations, edges) {
+  constructor(lwLocations, dwLocations, connectors) {
     this.edges = edges;
+    this.connectors = connectors;
     this.locations = new Map();
     this.locationsByPoi = new Map();
     this.pois = new Map();
@@ -61,7 +62,10 @@ class HyruleMapModel {
     const location = this.locations.get(name);
     if (!location || location.hidden) return;
 
-    if (location.type === 'drop' || location.type === 'item') {
+    if (location.type === 'drop') {
+      location.key = location.key || 0;
+      location.key = mod(location.key + 1, 6);
+    } else if (location.type === 'item') {
       location.key = location.key || 0;
       location.key = mod(location.key + 1, 5);
     } else if (location.medallionLocked) {
@@ -72,7 +76,7 @@ class HyruleMapModel {
         delete location.item;
       } else {
         location.key = location.key || 0;
-        location.key = mod(location.key + 1, 9);
+        location.key = mod(location.key + 1, 10);
       }
     }
   }
@@ -87,6 +91,11 @@ class HyruleMapModel {
 
   placePoi(name, poi) {
     const location = this.locations.get(name);
+    debugger
+    if (location.type === 'entrance' && poi.type === 'drop') {
+      poi.name = poi.name + '-entrance';
+      poi.type = 'entrance';
+    }
     if (!location || location.type !== poi.type || location.medallionLocked) return;
 
     if (location.poi) {
@@ -142,5 +151,26 @@ class HyruleMapModel {
     return Array.from(this.locations.values()).reduce((total, location) => {
       return total + (!location.found ? location.itemCount : 0);
     }, 0);
+  }
+
+  addConnector(name) {
+    const location = this.locations.get(name);
+    if (location.type === 'item') return;
+    if (this.connecting) {
+      this.connectors.addConnection(this.connecting, location);
+      delete this.connecting;
+    } else {
+      this.connecting = location;
+    }
+  }
+
+  addSecondaryConnector(name) {
+    const location = this.locations.get(name);
+    if (this.connecting) {
+      this.connectors.addConnection(this.connecting, location, 'lightblue');
+      delete this.connecting;
+    } else {
+      this.connecting = location;
+    }
   }
 }
