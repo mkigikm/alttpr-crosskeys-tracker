@@ -321,6 +321,7 @@ const lwLocations = [
   },
   {
     area: 'lw-main',
+    autofind: true,
     itemCount: 1,
     name: 'Link\'s House',
     x: 530,

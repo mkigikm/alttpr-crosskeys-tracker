@@ -38,7 +38,9 @@ class HyruleMapView {
           continue;
         }
 
-        if (loc.item) {
+        if (loc.name === 'Link\'s House') {
+          locEl.classList.add('chest');
+        } else if (loc.item) {
           const object = this.game.inventory.objects.get(loc.item);
           if (loc.item === 'sword') {
             locEl.classList.add(object.level > 0 ? 'mastersword' : loc.item);
