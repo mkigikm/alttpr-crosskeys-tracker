@@ -18,6 +18,7 @@ class HyruleMapModel {
   addLocation(location, world) {
     const loc = {
       area: location.area,
+      autofind: location.autofind,
       found: false,
       hidden: false,
       itemCount: location.itemCount || 0,
@@ -40,6 +41,9 @@ class HyruleMapModel {
     const location = this.locations.get(name);
     if (!location) return;
     location.hidden = !location.hidden;
+    if (location.autofind) {
+      location.found = !location.found;
+    }
   }
 
   untrack(name) {
@@ -60,7 +64,7 @@ class HyruleMapModel {
 
   cycle(name) {
     const location = this.locations.get(name);
-    if (!location || location.hidden) return;
+    if (!location || location.hidden || location.autofind) return;
 
     if (location.type === 'drop') {
       location.key = location.key || 0;
