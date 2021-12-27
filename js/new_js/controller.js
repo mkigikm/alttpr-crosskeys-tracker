@@ -53,8 +53,13 @@ class Controller {
     const dungeonName = el.parentElement.dataset.name;
     if (!dungeonName) return;
 
-    const field = el.dataset.field;
-    this.game.dungeons.track(dungeonName, field, 1);
+    if (this.game.inventory.selected) {
+      this.game.dungeons.placeTorchItem(dungeonName, this.game.inventory.selected.name);
+      this.clearSelected();
+    } else {
+      const field = el.dataset.field;
+      this.game.dungeons.track(dungeonName, field, 1);
+    }
     this.render();
   }
 

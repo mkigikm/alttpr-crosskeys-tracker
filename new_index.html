@@ -81,6 +81,7 @@
     <script src="js/new_js/game_model.js"></script>
 
     <script src="js/new_js/controller.js"></script>
+    <script src="js/new_js/autotracker.js"></script>
 
     <script>
      const dungeonProgress = new DungeonProgressModel(dungeonData);
@@ -100,8 +101,12 @@
        document.getElementById('controls'), document.getElementById('display'), game
      );
 
-     new Controller(dungeonProgressView, hyruleMapView, inventoryView, controlPanelView, game, new Connectors());
+     const controller = new Controller(dungeonProgressView, hyruleMapView, inventoryView, controlPanelView, game, new Connectors());
      document.getElementsByTagName('body')[0].addEventListener('contextmenu', e => e.preventDefault());
+
+     const autotracker = new Autotracker(game, controller);
+     console.log('starting autotracker');
+     autotracker.connect();
 
      const timer = new TimerModel();
      const timerView = new TimerView(document.getElementById('timer'), timer);

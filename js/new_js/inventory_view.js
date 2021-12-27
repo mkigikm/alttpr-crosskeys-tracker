@@ -27,6 +27,8 @@ class InventoryView {
         itemEl.className = itemEl.classList[0];
         itemEl.classList.add(`level${object.level}`);
         itemEl.classList.toggle('placing2', !!object.selected);
+        itemEl.classList.toggle('dp-item', this.game.dungeons.onDPTorch(object));
+        itemEl.classList.toggle('gt-item', this.game.dungeons.onGTTorch(object));
       }
     }
   }

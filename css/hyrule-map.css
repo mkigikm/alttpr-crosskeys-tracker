@@ -353,3 +353,21 @@ canvas {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.dp-item::after {
+  content: "DP";
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+}
+
+.gt-item::after {
+  content: "GT";
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+}
+
+#ybutton > div, #abutton > div {
+  position: relative;
+}

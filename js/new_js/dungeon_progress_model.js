@@ -45,6 +45,60 @@ class DungeonProgressModel {
     }
   }
 
+  placeTorchItem(name, item) {
+    debugger;
+    if (name === 'DP') {
+      this.dpTorchItem = item;
+    } else if (name === 'GT') {
+      this.gtTorchItem = item;
+    }
+  }
+
+  onDPTorch(item) {
+    return item.name === this.dpTorchItem;
+  }
+
+  onGTTorch(item) {
+    return item.name === this.gtTorchItem;
+  }
+
+  autotrackKeys(name, keyCount) {
+    const dungeon = this.dungeons.get(name);
+    if (!dungeon) {
+      return;
+    }
+
+    const oldKeys = dungeon.keys;
+    dungeon.keys = keyCount;
+    return oldKeys != dungeon.keys;
+  }
+
+  autotrackBigKey(name, hasBigKey) {
+    const dungeon = this.dungeons.get(name);
+    if (!dungeon) {
+      return;
+    }
+
+    if (dungeon.bigKey != hasBigKey) {
+      dungeon.bigKey = hasBigKey;
+      return true;
+    }
+    return false;
+  }
+
+  autotrackMap(name, hasMap) {
+    const dungeon = this.dungeons.get(name);
+    if (!dungeon) {
+      return;
+    }
+
+    if (hasMap && dungeon.prize === 0) {
+      dungeon.prize = 5;
+      return true;
+    }
+    return false;
+  }
+
   select(name) {
     if (name != 'CV') {
       if (this.selected === name) {

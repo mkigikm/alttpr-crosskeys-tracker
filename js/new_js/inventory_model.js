@@ -36,6 +36,18 @@ class InventoryModel {
     }
   }
 
+  autotrack(name, value) {
+    const object = this.objects.get(name);
+    if (!object) {
+      console.error('tried to set item', name);
+      return;
+    }
+
+    const oldLevel = object.level;
+    object.level = Math.min(value, object.maxLevel);
+    return oldLevel != object.level;
+  }
+
   hasMedallion(medallion) {
     switch (medallion) {
     case 1:
