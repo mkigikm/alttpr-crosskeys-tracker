@@ -144,6 +144,7 @@ class Autotracker {
       this.reconnect();
     }
     this.deviceName = results[0];
+    console.log('attaching to', this.deviceName);
     this.socket.send(JSON.stringify({
       Opcode: 'Attach',
       Space: 'SNES',
@@ -154,21 +155,44 @@ class Autotracker {
   }
 
   loop() {
-    this.timer = setTimeout(() => this.innerLoop(), 1000);
+    this.timer = setTimeout(() => this.innerLoop(), 100);
   }
 
   innerLoop() {
+    console.log('innerLoop');
     const count = this.loopCount++;
     const process = (event) => {
       this.track(new Uint8Array(event.data));
       this.loop();
     };
-    this.socket.send(JSON.stringify({
-      Opcode: 'GetAddress',
-      Space: 'SNES',
-      Operands: [SAVEDATA_START.toString(16), "0x1AE"],
-    }));
-    this.socket.onmessage = process;
+    if (this.loopCount === 0) {
+      this.socket.send(JSON.stringify({
+        Opcode: 'GetAddress',
+        Space: 'SNES',
+        Operands: [SAVEDATA_START.toString(16), '0x1AE'],
+      }));
+      this.socket.onmessage = process;
+    } else {
+      const p = (event) => {
+        const d = new Uint8Array(event.data);
+        this.game.controlPanel.setDisplayText(`id ${d[0x10E]} ${d[0x10F]}`, true);
+        this.dungeonId = d[0x10E] + (d[0x10F] << 8);
+        this.indoors = d[0x1B];
+        this.yCoord = d[0x20] + (d[0x21] << 8);
+        this.xCoord = d[0x22] + (d[0x23] << 8);
+        this.overworldIndex = d[0x8A] + (d[0x8B] << 8);
+        this.world = d[0x7B] === 0x40 ? 'dark' : 'light';
+        this.game.controlPanel.setDisplayText(`${this.world} ${this.overworldIndex.toString(16)} ${this.yCoord.toString(16)},${this.xCoord.toString(16)} ${!!this.indoors} this.dungeonId.toString(16)}`, true);
+        this.controller.render();
+        this.loop();
+      };
+      this.socket.send(JSON.stringify({
+        Opcode: 'GetAddress',
+        Space: 'SNES',
+        Operands: [(WRAM_START).toString(16), '0x1AE'],
+      }));
+      this.socket.onmessage = p;
+    }
   }
 
   track(data) {
