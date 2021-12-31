@@ -157,7 +157,7 @@ class HyruleMapModel {
   }
 
   autotrack(state, previousState) {
-    if (state.indoors === previousState.indoors) return;
+    if (state.indoors === previousState.indoors) return false;
 
     if (state.indoors) {
       const location = this.autotrackLocations.find((loc) => {
@@ -196,9 +196,12 @@ class HyruleMapModel {
               : Infinity;
         return curDistance < prevDistance ? cur : prev;
       });
-      this.placePoi(entrance.name, {name: location.poiName, type: location.type, unique: true});
-      return true;
+      if (location.poiName) {
+        this.placePoi(entrance.name, {name: location.poiName, type: location.type, unique: true});
+        return true;
+      }
     }
+    return false;
   }
 
   euclideanDistance(a, b) {

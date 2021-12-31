@@ -134,7 +134,6 @@ const lwLocations = [
       dropId: 0x0081,
       dungeonId: 0x0002,
       roomId: 0x0012,
-      saveAndQuit: true,
     },
   },
   {
@@ -553,7 +552,6 @@ const lwLocations = [
       coords: [0x0AFB, 0x08B8],
       dungeonId: 0x0001,
       roomId: 0x0104,
-      saveAndQuit: true,
     },
   },
   {
@@ -954,7 +952,7 @@ const lwLocations = [
   {
     area: 'dm-south-west',
     name: 'Old Man East',
-    poiName: 'old-man-main',
+    poiName: 'old-man-back',
     x: 560,
     y: 170,
     autotracker: {
@@ -963,13 +961,12 @@ const lwLocations = [
       dark: true,
       dungeonId: 0x0031,
       roomId: 0x00E5,
-      saveAndQuit: true,
     },
   },
   {
     area: 'dm-south-west',
     name: 'Old Man West',
-    poiName: 'old-man-back',
+    poiName: 'old-man-main',
     x: 460,
     y: 200,
     autotracker: {
@@ -977,7 +974,6 @@ const lwLocations = [
       coords: [0x03BA, 0x0728],
       dungeonId: 0x0030,
       roomId: 0x00E4,
-      saveAndQuit: true,
     },
   },
   {

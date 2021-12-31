@@ -175,15 +175,16 @@ class Autotracker {
       const p = (event) => {
         const d = new Uint8Array(event.data);
         const state = {
+          module: d[0x10],
           dungeonId: d[0x10E] + (d[0x10F] << 8),
           indoors: d[0x1B],
           coords: [d[0x20] + (d[0x21] << 8), d[0x22] + (d[0x23] << 8)],
           overworldIndex: d[0x8A] + (d[0x8B] << 8),
           roomId: d[0xA0] + (d[0xA1] << 8),
         }
-        // const myText = `0x${state.overworldIndex.toString(16).padStart(4, '0').toUpperCase()} 0x${state.coords[0].toString(16).padStart(4, '0').toUpperCase()}, 0x${state.coords[1].toString(16).padStart(4, '0').toUpperCase()} ${!!state.indoors} 0x${state.dungeonId.toString(16).padStart(4, '0').toUpperCase()} 0x${state.roomId.toString(16).padStart(4, '0').toUpperCase()}`;
-        // console.log(myText);
-        if(this.previousState && this.game.hyruleMap.autotrack(state, this.previousState)) {
+        const myText = `0x${state.module.toString(16).padStart(2, '0')} 0x${state.overworldIndex.toString(16).padStart(4, '0').toUpperCase()} 0x${state.coords[0].toString(16).padStart(4, '0').toUpperCase()}, 0x${state.coords[1].toString(16).padStart(4, '0').toUpperCase()} ${!!state.indoors} 0x${state.dungeonId.toString(16).padStart(4, '0').toUpperCase()} 0x${state.roomId.toString(16).padStart(4, '0').toUpperCase()}`;
+        //console.log(myText);
+        if(this.previousState && this.previousState.module > 0x05 && state.module > 0x05 && this.game.hyruleMap.autotrack(state, this.previousState)) {
           this.controller.render();
         }
         this.previousState = state;
