@@ -159,13 +159,12 @@ class Autotracker {
   }
 
   innerLoop() {
-    console.log('innerLoop');
     const count = this.loopCount++;
     const process = (event) => {
       this.track(new Uint8Array(event.data));
       this.loop();
     };
-    if (this.loopCount === 0) {
+    if (this.loopCount % 2 === 0) {
       this.socket.send(JSON.stringify({
         Opcode: 'GetAddress',
         Space: 'SNES',
@@ -175,15 +174,20 @@ class Autotracker {
     } else {
       const p = (event) => {
         const d = new Uint8Array(event.data);
-        this.game.controlPanel.setDisplayText(`id ${d[0x10E]} ${d[0x10F]}`, true);
-        this.dungeonId = d[0x10E] + (d[0x10F] << 8);
-        this.indoors = d[0x1B];
-        this.yCoord = d[0x20] + (d[0x21] << 8);
-        this.xCoord = d[0x22] + (d[0x23] << 8);
-        this.overworldIndex = d[0x8A] + (d[0x8B] << 8);
-        this.world = d[0x7B] === 0x40 ? 'dark' : 'light';
-        this.game.controlPanel.setDisplayText(`${this.world} ${this.overworldIndex.toString(16)} ${this.yCoord.toString(16)},${this.xCoord.toString(16)} ${!!this.indoors} this.dungeonId.toString(16)}`, true);
-        this.controller.render();
+        const state = {
+          dungeonId: d[0x10E] + (d[0x10F] << 8),
+          indoors: d[0x1B],
+          coords: [d[0x20] + (d[0x21] << 8), d[0x22] + (d[0x23] << 8)],
+          overworldIndex: d[0x8A] + (d[0x8B] << 8),
+          roomId: d[0xA0] + (d[0xA1] << 8),
+        }
+        // const myText = `0x${state.overworldIndex.toString(16).padStart(4, '0').toUpperCase()} 0x${state.coords[0].toString(16).padStart(4, '0').toUpperCase()}, 0x${state.coords[1].toString(16).padStart(4, '0').toUpperCase()} ${!!state.indoors} 0x${state.dungeonId.toString(16).padStart(4, '0').toUpperCase()} 0x${state.roomId.toString(16).padStart(4, '0').toUpperCase()}`;
+        // console.log(myText);
+        if(this.previousState && this.game.hyruleMap.autotrack(state, this.previousState)) {
+          this.controller.render();
+        }
+        this.previousState = state;
+
         this.loop();
       };
       this.socket.send(JSON.stringify({

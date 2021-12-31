@@ -19,8 +19,8 @@ class ControlPanelModel {
     delete this.selected;
   }
 
-  setDisplayText(text, actuallySet) {
-    if (actuallySet) this.displayText = text;
+  setDisplayText(text) {
+    this.displayText = text;
   }
 
   clearText() {

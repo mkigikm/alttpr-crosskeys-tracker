@@ -12,18 +12,21 @@ class HyruleMapModel {
     for (const location of dwLocations) {
       this.addLocation(location, 'dw');
     }
+    this.autotrackLocations = Array.from(this.locations.values()).filter((loc) => loc.type !== 'item' && !loc.medallionLocked);
   }
 
   addLocation(location, world) {
     const loc = {
       area: location.area,
       autofind: location.autofind,
+      autotracker: location.autotracker,
       found: false,
       hidden: false,
       itemCount: location.itemCount || 0,
       kakariko: location.kakariko,
       name: location.name,
       medallionLocked: location.medallionLocked,
+      poiName: location.poiName,
       requirement: location.requirement,
       type: location.type || 'entrance',
       world: world,
@@ -79,6 +82,11 @@ class HyruleMapModel {
         location.key = mod(location.key + 1, 9);
       }
     }
+  }
+
+  markAsChest(name) {
+    const location = this.locations.get(name);
+    location.key = 1;
   }
 
   placeItem(name, item) {
@@ -146,5 +154,56 @@ class HyruleMapModel {
     return Array.from(this.locations.values()).reduce((total, location) => {
       return total + (!location.found ? location.itemCount : 0);
     }, 0);
+  }
+
+  autotrack(state, previousState) {
+    if (state.indoors === previousState.indoors) return;
+
+    if (state.indoors) {
+      const location = this.autotrackLocations.find((loc) => {
+        return loc.autotracker.dungeonId === state.dungeonId ||
+          loc.autotracker.dropId === state.dungeonId ||
+          (loc.autotracker.dropIds || []).includes(state.dungeonId)
+      });
+      if (!location || location.autotracker.saveAndQuit || location.name.startsWith('Skull Woods')) return false;
+      const entrance = this.autotrackLocations.reduce((prev, cur) => {
+        const prevDistance = prev.autotracker.area === previousState.overworldIndex && prev.type === location.type ?
+              this.euclideanDistance(prev.autotracker.coords, previousState.coords)
+              : Infinity;
+        const curDistance = cur.autotracker.area === previousState.overworldIndex && cur.type === location.type ?
+              this.euclideanDistance(cur.autotracker.coords, previousState.coords)
+              : Infinity;
+        return curDistance < prevDistance ? cur : prev;
+      });
+      if (location.poiName) {
+        this.placePoi(entrance.name, {name: location.poiName, type: location.type, unique: true});
+      } else if (location.itemCount) {
+        this.markAsChest(entrance.name);
+        location.found = true;
+      } else if (!entrance.hidden) {
+        entrance.hidden = true;
+      }
+      return true;
+    } else {
+      const location = this.autotrackLocations.find((loc) => loc.autotracker.roomId === previousState.roomId);
+      if (!location || location.autotracker.saveAndQuit) return false;
+      const entrance = this.autotrackLocations.reduce((prev, cur) => {
+        const prevDistance = prev.autotracker.area === state.overworldIndex && prev.type === location.type ?
+              this.euclideanDistance(prev.autotracker.coords, state.coords)
+              : Infinity;
+        const curDistance = cur.autotracker.area === state.overworldIndex && cur.type === location.type ?
+              this.euclideanDistance(cur.autotracker.coords, state.coords)
+              : Infinity;
+        return curDistance < prevDistance ? cur : prev;
+      });
+      this.placePoi(entrance.name, {name: location.poiName, type: location.type, unique: true});
+      return true;
+    }
+  }
+
+  euclideanDistance(a, b) {
+    const xDiff = a[0] - b[0];
+    const yDiff = a[1] - b[1];
+    return xDiff * xDiff + yDiff * yDiff;
   }
 }

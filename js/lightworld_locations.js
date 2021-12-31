@@ -1,3 +1,4 @@
+// hoolihan 0x82
 const lwLocations = [
   {
     area: 'lw-main',
@@ -19,12 +20,22 @@ const lwLocations = [
     name: 'Lost Woods Casino',
     x: 180,
     y: 10,
+    autotracker: {
+      area: 0x0000,
+      coords: [0x001B, 0x02F0],
+      dungeonId: 0x003C,
+    },
   },
   {
     area: 'lw-main',
     name: 'Lumberjack Hut',
     x: 300,
     y: 70,
+    autotracker: {
+      area: 0x0002,
+      coords: [0x00EA, 0x0558],
+      dungeonId: 0x006B,
+    },
   },
   {
     area: 'lw-main',
@@ -35,6 +46,12 @@ const lwLocations = [
     type: 'drop',
     x: 320,
     y: 20,
+    autotracker: {
+      area: 0x0002,
+      coords: [0x007A, 0x0548],
+      dropId: 0x007F,
+      dungeonId: 0x0012,
+    },
   },
   {
     area: 'lw-main',
@@ -44,24 +61,51 @@ const lwLocations = [
     type: 'drop',
     x: 160,
     y: 150,
+    autotracker: {
+      area: 0x0000,
+      coords: [0x025B, 0x02E8],
+      dropId: 0x007A,
+      dungeonId: 0x002C,
+    },
   },
   {
     area: 'ascension-entrance',
     name: 'Ascension Entrance',
+    poiName: 'climb-bottom',
     x: 320,
     y: 170,
+    autotracker: {
+      area: 0x000A,
+      coords: [0x02CB, 0x05A8],
+      dark: true,
+      dungeonId: 0x0006,
+      roomId: 0x00F0,
+    },
   },
   {
     area: 'return-cave-exit',
     name: 'Return Cave Exit',
+    poiName: 'return-bottom',
     x: 310,
     y: 120,
+    autotracker: {
+      area: 0x000A,
+      coords: [0x026A, 0x05B8],
+      dark: true,
+      dungeonId: 0x002E,
+      roomId: 0x00E6,
+    },
   },
   {
     area: 'lw-main',
     name: 'Kakariko Fortune Teller',
     x: 160,
     y: 290,
+    autotracker: {
+      area: 0x0011,
+      coords: [0x051A, 0x02F8],
+      dungeonId: 0x0065,
+    },
   },
   {
     area: 'lw-main',
@@ -70,14 +114,28 @@ const lwLocations = [
     requirement: 'boots',
     x: 380,
     y: 280,
+    autotracker: {
+      area: 0x0013,
+      coords: [0x04BA, 0x0638],
+      dungeonId: 0x006E,
+    },
   },
   {
     area: 'lw-main',
     name: 'Sanctuary',
+    poiName: 'sanctuary',
     requirement: 'glove',
     type: 'drop',
     x: 440,
     y: 260,
+    autotracker: {
+      area: 0x0013,
+      coords: [0x043B, 0x0758],
+      dropId: 0x0081,
+      dungeonId: 0x0002,
+      roomId: 0x0012,
+      saveAndQuit: true,
+    },
   },
   {
     area: 'graveyard-ledge',
@@ -85,6 +143,11 @@ const lwLocations = [
     name: 'Graveyard Ledge',
     x: 550,
     y: 270,
+    autotracker: {
+      area: 0x0014,
+      coords: [0x0459, 0x0918],
+      dungeonId: 0x0052,
+    },
   },
   {
     area: 'kings-tomb',
@@ -93,13 +156,25 @@ const lwLocations = [
     requirement: 'boots',
     x: 600,
     y: 290,
+    autotracker: {
+      area: 0x0014,
+      coords: [0x04BA, 0x0998],
+      dungeonId: 0x005B,
+    },
   },
   {
     area: 'lw-main',
     name: 'Fairy Drop',
+    poiName: 'fairy-drop',
     type: 'drop',
     x: 650,
     y: 270,
+    autotracker: {
+      area: 0x0015,
+      coords: [0x045B, 0x0AA8],
+      dropId: 0x007C,
+      dungeonId: 0x0038,
+    },
   },
   {
     area: 'lw-main',
@@ -108,6 +183,11 @@ const lwLocations = [
     poiName: 'potion-shop',
     x: 780,
     y: 320,
+    autotracker: {
+      area: 0x0016,
+      coords: [0x054A, 0x0CC8],
+      dungeonId: 0x004C,
+    },
   },
   {
     area: 'lw-main',
@@ -117,6 +197,12 @@ const lwLocations = [
     type: 'drop',
     x: 10,
     y: 380,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x06CA, 0x00B8],
+      dropId: 0x0080,
+      dungeonId: 0x0039,
+    },
   },
   {
     area: 'lw-main',
@@ -125,20 +211,39 @@ const lwLocations = [
     name: 'Blind\'s Hut',
     x: 90,
     y: 380,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x06AB, 0x0208],
+      dungeonId: 0x0061,
+    },
   },
   {
     area: 'lw-main',
     kakariko: true,
     name: 'Elder Left',
+    poiName: 'elder-west',
     x: 150,
     y: 380,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x06AB, 0x0268],
+      dungeonId: 0x000D,
+      roomId: 0x00F2,
+    },
   },
   {
     area: 'lw-main',
     kakariko: true,
     name: 'Elder Right',
+    poiName: 'elder-east',
     x: 210,
     y: 380,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x06AB, 0x02A8],
+      dungeonId: 0x000E,
+      roomId: 0x00F3,
+    },
   },
   {
     area: 'lw-main',
@@ -146,6 +251,11 @@ const lwLocations = [
     name: 'Angry Left',
     x: 40,
     y: 430,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x076A, 0x00C8],
+      dungeonId: 0x003F,
+    },
   },
   {
     area: 'lw-main',
@@ -160,6 +270,11 @@ const lwLocations = [
     name: 'Angry Right',
     x: 210,
     y: 430,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x07AB, 0x0348],
+      dungeonId: 0x003E,
+    },
   },
   {
     area: 'lw-main',
@@ -168,6 +283,11 @@ const lwLocations = [
     name: 'Chicken Hut',
     x: 90,
     y: 480,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x089A, 0x0188],
+      dungeonId: 0x004B,
+    },
   },
   {
     area: 'lw-main',
@@ -177,6 +297,11 @@ const lwLocations = [
     poiName: 'sick-kid',
     x: 150,
     y: 480,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x088B, 0x0278],
+      dungeonId: 0x0040,
+    },
   },
   {
     area: 'lw-main',
@@ -184,6 +309,11 @@ const lwLocations = [
     name: 'Bush House',
     x: 210,
     y: 480,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x087B, 0x0338],
+      dungeonId: 0x0044,
+    },
   },
   {
     area: 'lw-main',
@@ -198,6 +328,11 @@ const lwLocations = [
     name: 'Tavern',
     x: 150,
     y: 580,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x097B, 0x0288],
+      dungeonId: 0x0042,
+    },
   },
   {
     area: 'lw-main',
@@ -205,6 +340,11 @@ const lwLocations = [
     name: 'Kakariko Shop',
     x: 90,
     y: 550,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x094A, 0x01B8],
+      dungeonId: 0x0046,
+    },
   },
   {
     area: 'lw-main',
@@ -212,6 +352,11 @@ const lwLocations = [
     name: 'Bombable Hut',
     x: 20,
     y: 570,
+    autotracker: {
+      area: 0x0018,
+      coords: [0x097A, 0x0068],
+      dungeonId: 0x004A,
+    },
   },
   {
     area: 'lw-main',
@@ -220,6 +365,11 @@ const lwLocations = [
     poiName: 'smith',
     x: 290,
     y: 500,
+    autotracker: {
+      area: 0x0022,
+      coords: [0x087B, 0x04D8],
+      dungeonId: 0x0064,
+    },
   },
   {
     area: 'magic-bat',
@@ -229,32 +379,61 @@ const lwLocations = [
     type: 'drop',
     x: 320,
     y: 550,
+    autotracker: {
+      area: 0x0022,
+      coords: [0x08DB, 0x0508],
+      dropId: 0x007E,
+      dungeonId: 0x0011,
+    },
   },
   {
     area: 'lw-main',
     itemCount: 1,
     name: 'Library',
-    poiName: 'library',
     x: 155,
     y: 650,
+    autotracker: {
+      area: 0x0029,
+      coords: [0x0A7B, 0x0278],
+      dungeonId: 0x0049,
+    },
   },
   {
     area: 'lw-main',
     name: 'Kakariko Casino',
     x: 200,
     y: 690,
+    autotracker: {
+      area: 0x0029,
+      coords: [0x0B2B, 0x0368],
+      dungeonId: 0x0067,
+    },
   },
   {
     area: 'lw-main',
     name: 'Brother\'s Right',
+    poiName: 'brothers-east',
     x: 150,
     y: 700,
+    autotracker: {
+      area: 0x0029,
+      coords: [0x0B6B, 0x0238],
+      dungeonId: 0x0010,
+      roomId: 0x00F5,
+    },
   },
   {
     area: 'race-game',
     name: 'Brother\'s Left',
+    poiName: 'brothers-west',
     x: 100,
     y: 700,
+    autotracker: {
+      area: 0x0028,
+      coords: [0x0B6B, 0x01B8],
+      dungeonId: 0x000F,
+      roomId: 0x00F4,
+    },
   },
   {
     area: 'race-game',
@@ -269,6 +448,11 @@ const lwLocations = [
     name: 'Cave 45',
     x: 270,
     y: 820,
+    autotracker: {
+      area: 0x0032,
+      coords: [0x0D29, 0x0438],
+      dungeonId: 0x0051,
+    },
   },
   {
     area: 'lw-main',
@@ -281,27 +465,54 @@ const lwLocations = [
   {
     area: 'lw-main',
     name: 'Hyrule Castle Main',
+    poiName: 'hyrule-main',
     x: 480,
     y: 450,
+    autotracker: {
+      area: 0x001B,
+      coords: [0x06F3, 0x07F8],
+      dungeonId: 0x0004,
+      roomId: 0x0061,
+    },
   },
   {
     area: 'hyrule-balcony',
     name: 'Hyrule Castle West',
+    poiName: 'hyrule-west',
     x: 430,
     y: 380,
+    autotracker: {
+      area: 0x001B,
+      coords: [0x062B, 0x0728],
+      dungeonId: 0x0003,
+      roomId: 0x0060,
+    },
   },
   {
     area: 'hyrule-balcony',
     name: 'Hyrule Castle East',
+    poiName: 'hyrule-east',
     x: 530,
     y: 380,
+    autotracker: {
+      area: 0x001B,
+      coords: [0x062B, 0x08C8],
+      dungeonId: 0x0005,
+      roomId: 0x0062,
+    },
   },
   {
     area: 'hyrule-balcony',
     name: 'Castle Tower',
+    poiName: 'CT',
     requirement: 'barrier',
     x: 480,
     y: 390,
+    autotracker: {
+      area: 0x001B,
+      coords: [0x0065B, 0x07F8],
+      dungeonId: 0x0024,
+    },
   },
   {
     area: 'lw-main',
@@ -311,6 +522,12 @@ const lwLocations = [
     type: 'drop',
     x: 580,
     y: 420,
+    autotracker: {
+      area: 0x001B,
+      coords: [0x06DB, 0x08C8],
+      dropId: 0x007D,
+      dungeonId: 0x0032,
+    },
   },
   {
     area: 'lw-main',
@@ -318,6 +535,11 @@ const lwLocations = [
     requirement: 'boots',
     x: 470,
     y: 650,
+    autotracker: {
+      area: 0x002B,
+      coords: [0x0A79, 0x0788],
+      dungeonId: 0x0071,
+    },
   },
   {
     area: 'lw-main',
@@ -326,12 +548,24 @@ const lwLocations = [
     name: 'Link\'s House',
     x: 530,
     y: 670,
+    autotracker: {
+      area: 0x002C,
+      coords: [0x0AFB, 0x08B8],
+      dungeonId: 0x0001,
+      roomId: 0x0104,
+      saveAndQuit: true,
+    },
   },
   {
     area: 'lw-main',
     name: 'Lightworld Hype Cave',
     x: 580,
     y: 760,
+    autotracker: {
+      area: 0x0034,
+      coords: [0x0C6A, 0x0988],
+      dungeonId: 0x005E,
+    },
   },
   {
     area: 'lw-main',
@@ -340,6 +574,11 @@ const lwLocations = [
     poiName: 'dam',
     x: 450,
     y: 920,
+    autotracker: {
+      area: 0x003B,
+      coords: [0x0EEB, 0x0778],
+      dungeonId: 0x004E,
+    },
   },
   {
     area: 'lw-main',
@@ -355,6 +594,11 @@ const lwLocations = [
     name: 'Mini Moldorm',
     x: 630,
     y: 930,
+    autotracker: {
+      area: 0x0035,
+      coords: [0x0EFA, 0x0A68],
+      dungeonId: 0x006C,
+    },
   },
   {
     area: 'lw-main',
@@ -362,12 +606,22 @@ const lwLocations = [
     requirement: 'glove',
     x: 290,
     y: 940,
+    autotracker: {
+      area: 0x003A,
+      coords: [0xF5A, 0x04F8],
+      dungeonId: 0x006D,
+    },
   },
   {
     area: 'lw-main',
     name: 'Desert Fairy',
     x: 270,
     y: 890,
+    autotracker: {
+      area: 0x003A,
+      coords: [0x0E3A, 0x0468],
+      dungeonId: 0x005E,
+    },
   },
   {
     area: 'bombos-ledge',
@@ -383,6 +637,11 @@ const lwLocations = [
     name: 'Agina',
     x: 190,
     y: 810,
+    autotracker: {
+      area: 0x0030,
+      coords: [0x0D2B, 0x0328],
+      dungeonId: 0x004D,
+    },
   },
   {
     area: 'checkerboard-ledge',
@@ -391,30 +650,62 @@ const lwLocations = [
     requirement: 'glove',
     x: 180,
     y: 760,
+    autotracker: {
+      area: 0x0030,
+      coords: [0x0C7A, 0x02C8],
+      dungeonId: 0x0072,
+    },
   },
   {
     area: 'desert-main',
     name: 'Desert Palace Main',
+    poiName: 'desert-main',
     x: 65,
     y: 820,
+    autotracker: {
+      area: 0x0030,
+      coords: [0x0CBB, 0x0129],
+      dungeonId: 0x0009,
+      roomId: 0x0084,
+    },
   },
   {
     area: 'desert-west-ledge',
     name: 'Desert Palace West',
+    poiName: 'desert-west',
     x: 10,
     y: 780,
+    autotracker: {
+      area: 0x0030,
+      coords: [0x0CAB, 0x0088],
+      dungeonId: 0x000B,
+      roomId: 0x0083,
+    },
   },
   {
     area: 'desert-east-ledge',
     name: 'Desert Palace East',
+    poiName: 'desert-east',
     x: 120,
     y: 780,
+    autotracker: {
+      area: 0x0030,
+      coords: [0x0CAB, 0x01C8],
+      dungeonId: 0x000A,
+      roomId: 0x0085,
+    },
   },
   {
     area: 'desert-back',
     name: 'Desert Palace Back',
+    poiName: 'desert-back',
     x: 65,
     y: 760,
+    autotracker: {
+      area: 0x0030,
+      coords: [0x0C3B, 0x0128],
+      dungeonId: 0x000C,
+    },
   },
   {
     area: 'desert-west-ledge',
@@ -428,6 +719,11 @@ const lwLocations = [
     name: 'Hylia Lake Fortune Teller',
     x: 630,
     y: 800,
+    autotracker: {
+      area: 0x0035,
+      coords: [0x0CCA, 0x0A58],
+      dungeonId: 0x0065,
+    },
   },
   {
     area: 'hylia-island',
@@ -441,12 +737,22 @@ const lwLocations = [
     name: 'Hylia Lake Shop',
     x: 710,
     y: 740,
+    autotracker: {
+      area: 0x0035,
+      coords: [0x0C3B, 0x0B98],
+      dungeonId: 0x0058,
+    },
   },
   {
     area: 'luck-fairy-island',
     name: 'Luck Fairy',
     x: 770,
     y: 840,
+    autotracker: {
+      area: 0x0035,
+      coords: [0x0D9B, 0x0CA8],
+      dungeonId: 0x005D,
+    },
   },
   {
     area: 'lake-hylia',
@@ -461,12 +767,22 @@ const lwLocations = [
     name: 'Ice Rod Cave',
     x: 880,
     y: 780,
+    autotracker: {
+      area: 0x0037,
+      coords: [0x0C4A, 0x0E48],
+      dungeonId: 0x0084,
+    },
   },
   {
     area: 'lw-main',
     name: 'Good Bee',
     x: 940,
     y: 780,
+    autotracker: {
+      area: 0x0037,
+      coords: [0x0C49, 0x0E98],
+      dungeonId: 0x0056,
+    },
   },
   {
     area: 'lw-main',
@@ -475,18 +791,33 @@ const lwLocations = [
     type: '',
     x: 910,
     y: 830,
+    autotracker: {
+      area: 0x0037,
+      coords: [0x0C99, 0x0E68],
+      dungeonId: 0x006F,
+    },
   },
   {
     area: 'lw-main',
     name: 'Eastern Fairy',
     x: 810,
     y: 640,
+    autotracker: {
+      area: 0x002E,
+      coords: [0x0A49, 0x0D28],
+      dungeonId: 0x005E,
+    },
   },
   {
     area: 'lw-main',
     name: 'Eastern Portal',
     x: 950,
     y: 695,
+    autotracker: {
+      area: 0x002F,
+      coords: [0x0B2B, 0x0FA8],
+      dungeonId: 0x0055,
+    },
   },
   {
     area: 'lw-main',
@@ -495,12 +826,23 @@ const lwLocations = [
     poiName: 'saha',
     x: 790,
     y: 440,
+    autotracker: {
+      area: 0x001E,
+      coords: [0x073B, 0x0CF0],
+      dungeonId: 0x0045,
+    },
   },
   {
     area: 'lw-main',
     name: 'Eastern Palace',
+    poiName: 'EP',
     x: 940,
     y: 400,
+    autotracker: {
+      area: 0x001E,
+      coords: [0x062B, 0x0F50],
+      dungeonId: 0x0008,
+    },
   },
   {
     area: 'waterfall-fairy-ledge',
@@ -508,6 +850,11 @@ const lwLocations = [
     name: 'Waterfall Fairy',
     x: 890,
     y: 200,
+    autotracker: {
+      area: 0x000F,
+      coords: [0x021A, 0x0E60],
+      dungeonId: 0x005C,
+    },
   },
   {
     area: 'zora-ledge',
@@ -534,8 +881,14 @@ const lwLocations = [
   {
     area: 'dm-north-west',
     name: 'Tower of Hera',
+    poiName: 'TH',
     x: 540,
     y: 10,
+    autotracker: {
+      area: 0x0003,
+      coords: [0x007B, 0x08F0],
+      dungeonId: 0x0033,
+    },
   },
   {
     area: 'spec-rock-ledge',
@@ -547,14 +900,28 @@ const lwLocations = [
   {
     area: 'dm-south-west',
     name: 'Spectacle Rock Top',
+    poiName: 'spec-rock-item',
     x: 490,
     y: 80,
+    autotracker: {
+      area: 0x0003,
+      coords: [0x019A, 0x07C8],
+      dungeonId: 0x0023,
+      roomId: 0x00EA,
+    },
   },
   {
     area: 'dm-south-west',
     name: 'Spectacle Rock Middle',
+    poiName: 'spec-rock-exit',
     x: 440,
     y: 110,
+    autotracker: {
+      area: 0x0003,
+      coords: [0x022A, 0x0748],
+      dungeonId: 0x0021,
+      roomId: 0x00F9,
+    },
   },
   {
     area: 'dm-south-west',
@@ -563,24 +930,55 @@ const lwLocations = [
     poiName: 'spec-rock-underpass',
     x: 490,
     y: 130,
+    autotracker: {
+      area: 0x0003,
+      coords: [0x024A, 0x07C8],
+      dungeonId: 0x0022,
+      roomId: 0x00FA,
+    },
   },
   {
     area: 'dm-south-west',
     name: 'Return Cave Entrance',
+    poiName: 'return-top',
     x: 380,
     y: 100,
+    autotracker: {
+      area: 0x0003,
+      coords: [0x022B, 0x0648],
+      dark: true,
+      dungeonId: 0x002F,
+      roomId: 0x00E7,
+    },
   },
   {
     area: 'dm-south-west',
     name: 'Old Man East',
+    poiName: 'old-man-main',
     x: 560,
     y: 170,
+    autotracker: {
+      area: 0x0003,
+      coords: [0x028B, 0x0888],
+      dark: true,
+      dungeonId: 0x0031,
+      roomId: 0x00E5,
+      saveAndQuit: true,
+    },
   },
   {
     area: 'dm-south-west',
     name: 'Old Man West',
+    poiName: 'old-man-back',
     x: 460,
     y: 200,
+    autotracker: {
+      area: 0x0003,
+      coords: [0x03BA, 0x0728],
+      dungeonId: 0x0030,
+      roomId: 0x00E4,
+      saveAndQuit: true,
+    },
   },
   {
     area: 'dm-south-west',
@@ -596,6 +994,13 @@ const lwLocations = [
     poiName: 'climb-top',
     x: 380,
     y: 150,
+    autotracker: {
+      area: 0x0003,
+      coords: [0x02FB, 0x0678],
+      dark: true,
+      dungeonId: 0x0007,
+      roomId: 0x00F1,
+    },
   },
   {
     area: 'floating-island',
@@ -607,8 +1012,15 @@ const lwLocations = [
   {
     area: 'dm-north-east',
     name: 'Paradox Cave Top',
+    poiName: 'paradox-exit',
     x: 840,
     y: 20,
+    autotracker: {
+      area: 0x0005,
+      coords: [0x00FA, 0x0DB8],
+      dungeonId: 0x0020,
+      roomId: 0x00DF,
+    },
   },
   {
     area: 'dm-south-east',
@@ -617,6 +1029,12 @@ const lwLocations = [
     poiName: 'paradox-5items',
     x: 860,
     y: 150,
+    autotracker: {
+      area: 0x0005,
+      coords: [0x024A, 0x0DA8],
+      dungeonId: 0x001E,
+      roomId: 0x00FF,
+    },
   },
   {
     area: 'dm-south-east',
@@ -625,24 +1043,49 @@ const lwLocations = [
     poiName: 'paradox-2items',
     x: 830,
     y: 200,
+    autotracker: {
+      area: 0x0005,
+      coords: [0x036B, 0x0DC8],
+      dungeonId: 0x001F,
+      roomId: 0x00EF,
+    },
   },
   {
     area: 'dm-south-east',
     name: 'Left of Paradox Cave',
     x: 800,
     y: 150,
+    autotracker: {
+      area: 0x0005,
+      coords: [0x0249, 0x0D78],
+      dungeonId: 0x0050,
+    },
   },
   {
     area: 'dm-fairy-bottom-ledge',
     name: 'East Death Mountain Fairy Bottom',
+    poiName: 'fairy-bottom',
     x: 750,
     y: 150,
+    autotracker: {
+      area: 0x0005,
+      coords: [0x022B, 0x0D18],
+      dungeonId: 0x001A,
+      roomId: 0x00FD,
+    },
   },
   {
     area: 'dm-fairy-top-ledge',
     name: 'East Death Mountain Fairy Top',
+    poiName: 'fairy-top',
     x: 750,
     y: 100,
+    autotracker: {
+      area: 0x0005,
+      coords: [0x01CA, 0x0D18],
+      dungeonId: 0x001B,
+      roomId: 0x00ED,
+    },
   },
   {
     area: 'mimic-cave-ledge',
@@ -651,6 +1094,11 @@ const lwLocations = [
     poiName: 'mimic',
     x: 830,
     y: 80,
+    autotracker: {
+      area: 0x0005,
+      coords: [0x016B, 0x0D78],
+      dungeonId: 0x004F,
+    },
   },
   {
     area: 'spiral-cave-top-ledge',
@@ -659,11 +1107,24 @@ const lwLocations = [
     poiName: 'spiral-top',
     x: 670,
     y: 80,
+    autotracker: {
+      area: 0x0005,
+      coords: [0x016B, 0x0CB8],
+      dungeonId: 0x001D,
+      roomId: 0x00EE,
+    },
   },
   {
     area: 'dm-south-east',
     name: 'Spiral Cave Bottom',
+    poiName: 'spiral-bottom',
     x: 670,
     y: 150,
+    autotracker: {
+      area: 0x0005,
+      coords: [0x020A, 0x0CC8],
+      dungeonId: 0x001C,
+      roomId: 0x00FE,
+    },
   },
 ];
