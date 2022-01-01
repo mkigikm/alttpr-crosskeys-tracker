@@ -12,6 +12,7 @@ class HyruleMapView {
 
   attachToDOM() {
     for (const loc of this.game.hyruleMap.locations.values()) {
+      if (loc.unMapped) continue;
       const el = document.createElement('div');
       el.dataset.name = loc.name;
       el.style.left = `${loc.x - 10}px`;

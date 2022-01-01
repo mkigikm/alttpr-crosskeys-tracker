@@ -14,7 +14,7 @@ const dwLocations = [
   },
   {
     area: 'dw-village',
-    name: 'Skull Woods East',
+    name: 'Skull Woods',
     x: 160,
     y: 150,
     autotracker: {
@@ -29,6 +29,7 @@ const dwLocations = [
     name: 'Skull Woods Central',
     x: 160,
     y: 150,
+    unMapped: true,
     autotracker: {
       area: 0x0040,
       coords: [0x024B, 0x0248],
@@ -41,6 +42,7 @@ const dwLocations = [
     name: 'Skull Woods West',
     x: 160,
     y: 150,
+    unMapped: true,
     autotracker: {
       area: 0x0040,
       coords: [0x020B, 0x00E8],

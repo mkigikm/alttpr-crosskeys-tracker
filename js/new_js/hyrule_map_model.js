@@ -20,6 +20,7 @@ class HyruleMapModel {
       area: location.area,
       autofind: location.autofind,
       autotracker: location.autotracker,
+      unMapped: location.unMapped,
       found: false,
       hidden: false,
       itemCount: location.itemCount || 0,
@@ -156,7 +157,7 @@ class HyruleMapModel {
     }, 0);
   }
 
-  autotrack(state, previousState) {
+  autotrack(state, previousState, hasLamp) {
     if (state.indoors === previousState.indoors) return false;
 
     if (state.indoors) {
@@ -166,6 +167,7 @@ class HyruleMapModel {
           (loc.autotracker.dropIds || []).includes(state.dungeonId)
       });
       if (!location || location.autotracker.saveAndQuit || location.name.startsWith('Skull Woods')) return false;
+      let winningDistance = Infinity;
       const entrance = this.autotrackLocations.reduce((prev, cur) => {
         const prevDistance = prev.autotracker.area === previousState.overworldIndex && prev.type === location.type ?
               this.euclideanDistance(prev.autotracker.coords, previousState.coords)
@@ -173,9 +175,22 @@ class HyruleMapModel {
         const curDistance = cur.autotracker.area === previousState.overworldIndex && cur.type === location.type ?
               this.euclideanDistance(cur.autotracker.coords, previousState.coords)
               : Infinity;
-        return curDistance < prevDistance ? cur : prev;
+        if (curDistance < prevDistance) {
+          winningDistance = curDistance;
+          return cur;
+        } else {
+          return prev;
+        }
       });
+      if (winningDistance === Infinity) {
+        console.log('winning distance infinity', state, previousState);
+        return false;
+      }
+
       if (location.poiName) {
+        if (location.autotracker.dark && !hasLamp) {
+          return false;
+        }
         this.placePoi(entrance.name, {name: location.poiName, type: location.type, unique: true});
       } else if (location.itemCount) {
         this.markAsChest(entrance.name);
@@ -187,6 +202,7 @@ class HyruleMapModel {
     } else {
       const location = this.autotrackLocations.find((loc) => loc.autotracker.roomId === previousState.roomId);
       if (!location || location.autotracker.saveAndQuit) return false;
+      let winningDistance = Infinity;
       const entrance = this.autotrackLocations.reduce((prev, cur) => {
         const prevDistance = prev.autotracker.area === state.overworldIndex && prev.type === location.type ?
               this.euclideanDistance(prev.autotracker.coords, state.coords)
@@ -194,9 +210,22 @@ class HyruleMapModel {
         const curDistance = cur.autotracker.area === state.overworldIndex && cur.type === location.type ?
               this.euclideanDistance(cur.autotracker.coords, state.coords)
               : Infinity;
-        return curDistance < prevDistance ? cur : prev;
+        if (curDistance < prevDistance) {
+          winningDistance = curDistance;
+          return cur;
+        } else {
+          return prev;
+        }
       });
+      if (winningDistance === Infinity) {
+        console.log('winning distance infinity', state, previousState);
+        return false;
+      }
+
       if (location.poiName) {
+        if (location.autotracker.dark && !hasLamp) {
+          return false;
+        }
         this.placePoi(entrance.name, {name: location.poiName, type: location.type, unique: true});
         return true;
       }

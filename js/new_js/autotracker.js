@@ -184,7 +184,11 @@ class Autotracker {
         }
         const myText = `0x${state.module.toString(16).padStart(2, '0')} 0x${state.overworldIndex.toString(16).padStart(4, '0').toUpperCase()} 0x${state.coords[0].toString(16).padStart(4, '0').toUpperCase()}, 0x${state.coords[1].toString(16).padStart(4, '0').toUpperCase()} ${!!state.indoors} 0x${state.dungeonId.toString(16).padStart(4, '0').toUpperCase()} 0x${state.roomId.toString(16).padStart(4, '0').toUpperCase()}`;
         //console.log(myText);
-        if(this.previousState && this.previousState.module > 0x05 && state.module > 0x05 && this.game.hyruleMap.autotrack(state, this.previousState)) {
+        if (this.previousState &&
+            this.previousState.module > 0x05 &&
+            state.module > 0x05 &&
+            this.game.hyruleMap.autotrack(state, this.previousState, this.game.inventory.objects.get('lamp').level > 0)
+           ) {
           this.controller.render();
         }
         this.previousState = state;
