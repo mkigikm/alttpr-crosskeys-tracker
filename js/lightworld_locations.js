@@ -343,6 +343,7 @@ const lwLocations = [
       area: 0x0018,
       coords: [0x094A, 0x01B8],
       dungeonId: 0x0046,
+      isShop: true,
     },
   },
   {
@@ -608,6 +609,7 @@ const lwLocations = [
       area: 0x003A,
       coords: [0xF5A, 0x04F8],
       dungeonId: 0x006D,
+      isRupees: true,
     },
   },
   {
@@ -739,6 +741,7 @@ const lwLocations = [
       area: 0x0035,
       coords: [0x0C3B, 0x0B98],
       dungeonId: 0x0058,
+      isShop: true,
     },
   },
   {
@@ -793,6 +796,7 @@ const lwLocations = [
       area: 0x0037,
       coords: [0x0C99, 0x0E68],
       dungeonId: 0x006F,
+      isRupees: true,
     },
   },
   {
@@ -1023,20 +1027,6 @@ const lwLocations = [
     itemCount: 5,
     name: 'Paradox Cave Middle',
     poiName: 'paradox-5items',
-    x: 860,
-    y: 150,
-    autotracker: {
-      area: 0x0005,
-      coords: [0x024A, 0x0DA8],
-      dungeonId: 0x001E,
-      roomId: 0x00FF,
-    },
-  },
-  {
-    area: 'dm-south-east',
-    itemCount: 2,
-    name: 'Paradox Cave Bottom',
-    poiName: 'paradox-2items',
     x: 830,
     y: 200,
     autotracker: {
@@ -1044,6 +1034,20 @@ const lwLocations = [
       coords: [0x036B, 0x0DC8],
       dungeonId: 0x001F,
       roomId: 0x00EF,
+    },
+  },
+  {
+    area: 'dm-south-east',
+    itemCount: 2,
+    name: 'Paradox Cave Bottom',
+    poiName: 'paradox-2items',
+    x: 860,
+    y: 150,
+    autotracker: {
+      area: 0x0005,
+      coords: [0x024A, 0x0DA8],
+      dungeonId: 0x001E,
+      roomId: 0x00FF,
     },
   },
   {

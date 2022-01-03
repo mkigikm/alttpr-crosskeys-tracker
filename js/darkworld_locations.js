@@ -59,6 +59,7 @@ const dwLocations = [
       area: 0x0042,
       coords: [0x00B, 0x0558],
       dungeonId: 0x0060,
+      isShop: true,
     },
   },
   {
@@ -125,6 +126,7 @@ const dwLocations = [
       area: 0x0056,
       coords: [0x055B, 0x0CD8],
       dungeonId: 0x0060,
+      isShop: true,
     },
   },
   {
@@ -173,6 +175,7 @@ const dwLocations = [
       area: 0x0058,
       coords: [0x087A, 0x0338],
       dungeonId: 0x0060,
+      isShop: true,
     },
   },
   {
@@ -197,6 +200,7 @@ const dwLocations = [
       area: 0x005A,
       coords: [0x074B, 0x0548],
       dungeonId: 0x0057,
+      isShop: true,
     },
   },
   {
@@ -229,6 +233,7 @@ const dwLocations = [
       area: 0x0069,
       coords: [0x0B2B, 0x0368],
       dungeonId: 0x0059,
+      isRupees: true,
     },
   },
   {
@@ -394,6 +399,7 @@ const dwLocations = [
       area: 0x0075,
       coords: [0x0CCB, 0x0A58],
       dungeonId: 0x0060,
+      isShop: true,
     },
   },
   {
@@ -585,6 +591,7 @@ const dwLocations = [
       area: 0x0045,
       coords: [0x0249, 0x0DA8],
       dungeonId: 0x0058,
+      isShop: true,
     },
   },
   {

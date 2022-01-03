@@ -186,8 +186,10 @@ class Autotracker {
         //console.log(myText);
         if (this.previousState &&
             this.previousState.module > 0x05 &&
+            this.previousState.module < 0x17 &&
             state.module > 0x05 &&
-            this.game.hyruleMap.autotrack(state, this.previousState, this.game.inventory.objects.get('lamp').level > 0)
+            state.module < 0x17 &&
+            this.game.hyruleMap.autotrack(state, this.previousState, this.game.inventory.objects.get('lamp').level > 10)
            ) {
           this.controller.render();
         }

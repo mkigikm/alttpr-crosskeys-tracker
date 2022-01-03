@@ -90,6 +90,26 @@ class HyruleMapModel {
     location.key = 1;
   }
 
+  markAsDark(name) {
+    const location = this.locations.get(name);
+    location.key = 2;
+  }
+
+  markAsFairy(name) {
+    const location = this.locations.get(name);
+    location.key = 3;
+  }
+
+  markAsShop(name) {
+    const location = this.locations.get(name);
+    location.key = 4;
+  }
+
+  markAsRupees(name) {
+    const location = this.locations.get(name);
+    location.key = 8;
+  }
+
   placeItem(name, item) {
     const location = this.locations.get(name);
     if (!location || location.medallionLocked) return;
@@ -160,82 +180,78 @@ class HyruleMapModel {
   autotrack(state, previousState, hasLamp) {
     if (state.indoors === previousState.indoors) return false;
 
+    let location;
+    let entranceState;
     if (state.indoors) {
-      const location = this.autotrackLocations.find((loc) => {
+      location = this.autotrackLocations.find((loc) => {
         return loc.autotracker.dungeonId === state.dungeonId ||
           loc.autotracker.dropId === state.dungeonId ||
           (loc.autotracker.dropIds || []).includes(state.dungeonId)
       });
-      if (!location || location.autotracker.saveAndQuit || location.name.startsWith('Skull Woods')) return false;
-      let winningDistance = Infinity;
-      const entrance = this.autotrackLocations.reduce((prev, cur) => {
-        const prevDistance = prev.autotracker.area === previousState.overworldIndex && prev.type === location.type ?
-              this.euclideanDistance(prev.autotracker.coords, previousState.coords)
-              : Infinity;
-        const curDistance = cur.autotracker.area === previousState.overworldIndex && cur.type === location.type ?
-              this.euclideanDistance(cur.autotracker.coords, previousState.coords)
-              : Infinity;
-        if (curDistance < prevDistance) {
-          winningDistance = curDistance;
-          return cur;
-        } else {
-          return prev;
-        }
-      });
-      if (winningDistance === Infinity) {
-        console.log('winning distance infinity', state, previousState);
-        return false;
-      }
-
-      if (location.poiName) {
-        if (location.autotracker.dark && !hasLamp) {
-          return false;
-        }
-        this.placePoi(entrance.name, {name: location.poiName, type: location.type, unique: true});
-      } else if (location.itemCount) {
-        this.markAsChest(entrance.name);
-        location.found = true;
-      } else if (!entrance.hidden) {
-        entrance.hidden = true;
-      }
-      return true;
+      entranceState = previousState;
     } else {
-      const location = this.autotrackLocations.find((loc) => loc.autotracker.roomId === previousState.roomId);
-      if (!location || location.autotracker.saveAndQuit) return false;
-      let winningDistance = Infinity;
-      const entrance = this.autotrackLocations.reduce((prev, cur) => {
-        const prevDistance = prev.autotracker.area === state.overworldIndex && prev.type === location.type ?
-              this.euclideanDistance(prev.autotracker.coords, state.coords)
-              : Infinity;
-        const curDistance = cur.autotracker.area === state.overworldIndex && cur.type === location.type ?
-              this.euclideanDistance(cur.autotracker.coords, state.coords)
-              : Infinity;
-        if (curDistance < prevDistance) {
-          winningDistance = curDistance;
-          return cur;
+      location = this.autotrackLocations.find((loc) => loc.autotracker.roomId === previousState.roomId);
+      entranceState = state;
+    }
+    if (!location || location.name.startsWith('Skull Woods')) return false;
+
+    let winningDistance = this.mapDistance(this.autotrackLocations[0], location, entranceState);
+    const entrance = this.autotrackLocations.reduce((prev, cur) => {
+      const curDistance = this.mapDistance(cur, location, entranceState);
+      if (curDistance < winningDistance) {
+        winningDistance = curDistance;
+        return cur;
+      } else {
+        return prev;
+      }
+    });
+    if (winningDistance === Infinity) {
+      console.log('winning distance infinity', state, previousState);
+      return false;
+    }
+
+    if (location.poiName) {
+      if (location.autotracker.dark && !hasLamp) {
+        if (entrance.poi) {
+          return false;
         } else {
-          return prev;
+          this.markAsDark(entrance.name);
+          return true;
         }
-      });
-      if (winningDistance === Infinity) {
-        console.log('winning distance infinity', state, previousState);
+      }
+      const currentPoi = this.pois.get(location.poiName);
+      if (currentPoi && currentPoi.name === entrance.name) {
+        console.log('not setting poi because it has already been set', location.poiName, entrance.name);
         return false;
       }
-
-      if (location.poiName) {
-        if (location.autotracker.dark && !hasLamp) {
-          return false;
-        }
-        this.placePoi(entrance.name, {name: location.poiName, type: location.type, unique: true});
-        return true;
-      }
+      this.placePoi(entrance.name, {name: location.poiName, type: location.type, unique: true});
+      return true;
+    } else if (state.indoors && location.itemCount) {
+      this.markAsChest(entrance.name);
+      location.found = true;
+      return true;
+    } else if (location.name === 'Luck Fairy') {
+      this.markAsFairy(entrance.name)
+      return true;
+    } else if (location.autotracker.isShop) {
+      this.markAsShop(entrance.name);
+      return true;
+    } else if (location.autotracker.isRupees) {
+      this.markAsRupees(entrance.name);
+      return true;
+    } else if (state.indoors && !entrance.hidden) {
+      entrance.hidden = true;
+      return true;
     }
     return false;
   }
 
-  euclideanDistance(a, b) {
-    const xDiff = a[0] - b[0];
-    const yDiff = a[1] - b[1];
-    return xDiff * xDiff + yDiff * yDiff;
+  mapDistance(location, entrance, state) {
+    if (location.autotracker.area === state.overworldIndex && location.type === entrance.type) {
+      const xDiff = location.autotracker.coords[0] - state.coords[0];
+      const yDiff = location.autotracker.coords[1] - state.coords[1];
+      return xDiff * xDiff + yDiff * yDiff;
+    }
+    return Infinity;
   }
 }
