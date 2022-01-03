@@ -1,8 +1,7 @@
 const WRAM_START = 0xF50000;
-const SAVEDATA_START = WRAM_START + 0xF000 + 0x340;
+const SAVEDATA_START = WRAM_START + 0xF000 + 0x342;
 
 const INVENTORY_OFFSETS = {
-  bow: 0x340,
   hookshot: 0x342,
   firerod: 0x345,
   icerod: 0x346,
@@ -66,7 +65,7 @@ const KEY_OFFSETS = {
   GT: 0x4ED,
 };
 
-const t = (offset) => offset - INVENTORY_OFFSETS.bow;
+const t = (offset) => offset - INVENTORY_OFFSETS.hookshot;
 
 const INVENTORY_TRACKING_OFFSET = 0x38C;
 const INVENTORY_TRACKING_MASKS = {
@@ -76,20 +75,28 @@ const INVENTORY_TRACKING_MASKS = {
   flute: 0x03,
 };
 
+const BOW_TRACKING_OFFSET = 0x38E;
+const BOW_MASKS = {
+  first_bow: 0x80,
+  silver_bow: 0x40,
+  second_bow: 0x20,
+};
+
 class Autotracker {
   constructor(game, controller) {
 	  this.game = game;
     this.controller = controller;
   }
 
-  connect() {
+  connect(url) {
+    this.url = url;
     console.log('attempting connection');
     if (this.socket) {
       console.log('socket is established so oh well', socket);
       return;
     }
 
-    this.socket = new WebSocket('ws://localhost:8080');
+    this.socket = new WebSocket(this.url);
     this.socket.binaryType = 'arraybuffer';
 
     this.socket.onclose = (event) => {
@@ -110,7 +117,7 @@ class Autotracker {
   }
 
   reconnect() {
-    setTimeout(() => this.connect(), 5000);
+    setTimeout(() => this.connect(this.url), 5000);
   }
 
   cleanup() {
@@ -142,6 +149,7 @@ class Autotracker {
       console.log('no devices');
       this.cleanup();
       this.reconnect();
+      return;
     }
     this.deviceName = results[0];
     console.log('attaching to', this.deviceName);
@@ -208,6 +216,17 @@ class Autotracker {
 
   track(data) {
     let updated = false;
+
+    const hasFirstBow = !!data[t(BOW_TRACKING_OFFSET[BOW_MASKS.first_bow])];
+    const hasSilverBow = !!data[t(BOW_TRACKING_OFFSET[BOW_MASKS.silver_bow])];
+    const hasSecondBow = !!data[t(BOW_TRACKING_OFFSET[BOW_MASKS.second_bow])];
+    if ((hasFirstBow && hasSecondBow) || hasSilverBow) {
+      updated = this.game.inventory.autotrack('bow', 2) || updated;
+    } else if (hasFirstBow || hasSecondBow) {
+      updated = this.game.inventory.autotrack('bow', 1) || updated;
+    } else {
+      updated = this.game.inventory.autotrack('bow', 0) || updated;
+    }
 
     for (const item in INVENTORY_OFFSETS) {
       const itemLevel = data[t(INVENTORY_OFFSETS[item])];
