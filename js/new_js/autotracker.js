@@ -189,7 +189,7 @@ class Autotracker {
             this.previousState.module < 0x17 &&
             state.module > 0x05 &&
             state.module < 0x17 &&
-            this.game.hyruleMap.autotrack(state, this.previousState, this.game.inventory.objects.get('lamp').level > 10)
+            this.game.hyruleMap.autotrack(state, this.previousState, this.game.inventory.objects.get('lamp').level > 0)
            ) {
           this.controller.render();
         }
