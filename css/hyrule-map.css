@@ -118,6 +118,10 @@ canvas {
   background-image: url('../images/map/info.png');
 }
 
+.fairy-queen {
+  background-image: url('../images/map/fairy_queen.png');
+}
+
 .elder, .elder-west, .elder-east {
   background-image: url('../images/map/elder.png');
 }
@@ -128,10 +132,6 @@ canvas {
 
 .chest {
   background-image: url('../images/map/chest.png');
-}
-
-.dark {
-  background-image: url('../images/items/lamp.png');
 }
 
 .smith {

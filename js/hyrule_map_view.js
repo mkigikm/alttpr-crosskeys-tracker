@@ -1,6 +1,6 @@
 const MEDALLION_LIST = ['bombos', 'ether', 'quake'];
 const ITEMDROP_KEY_LIST = ['key', 'big-key', 'map', 'rupee'];
-const ENTRANCE_KEY_LIST = ['chest', 'dark', 'fairy-drop', 'shop'].concat(ITEMDROP_KEY_LIST);
+const ENTRANCE_KEY_LIST = ['chest', 'dark', 'fairy-queen', 'shop'].concat(ITEMDROP_KEY_LIST);
 
 class HyruleMapView {
   constructor(lwEl, dwEl, game) {
