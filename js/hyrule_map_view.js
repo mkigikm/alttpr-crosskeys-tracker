@@ -44,9 +44,19 @@ class HyruleMapView {
         } else if (loc.item) {
           const object = this.game.inventory.objects.get(loc.item);
           if (loc.item === 'sword') {
-            locEl.classList.add(object.level > 0 ? 'mastersword' : loc.item);
+            if (object.level === 0) {
+              locEl.classList.add('sword');
+            } else if (object.level === 1) {
+              locEl.classList.add('mastersword');
+            } else if (object.level === 2) {
+              locEl.classList.add('temperedsword');
+            } else {
+              locEl.classList.add('goldsword');
+            }
           } else if (loc.item === 'glove') {
             locEl.classList.add(object.level > 0 ? 'mitts' : loc.item);
+          } else if (loc.item === 'bow') {
+            locEl.classList.add(object.level > 0 ? 'silvers' : loc.item);
           } else {
             locEl.classList.add(loc.item);
           }

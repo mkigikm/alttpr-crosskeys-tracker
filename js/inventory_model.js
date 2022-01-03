@@ -3,7 +3,7 @@ class InventoryModel {
     this.objects = new Map();
 
     for (const item of totalInventory) {
-      this.objects.set(item.name, { name: item.name, level: 0, maxLevel: item.progressive ? 2 : 1 });
+      this.objects.set(item.name, { name: item.name, level: 0, maxLevel: item.maxLevel });
     }
   }
 

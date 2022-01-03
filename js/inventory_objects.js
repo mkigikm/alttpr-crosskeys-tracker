@@ -1,6 +1,6 @@
 const totalInventory = [
-  {name: 'bow'},
-  {name: 'sword', progressive: true},
+  {name: 'bow', maxLevel: 2},
+  {name: 'sword', maxLevel: 4},
   {name: 'hookshot'},
   {name: 'mushroom'},
   {name: 'powder'},
@@ -20,7 +20,7 @@ const totalInventory = [
   {name: 'cape'},
   {name: 'mirror'},
   {name: 'boots', abutton: true},
-  {name: 'glove', abutton: true, progressive: true},
+  {name: 'glove', abutton: true, maxLevel: 2},
   {name: 'flippers', abutton: true},
   {name: 'mearl', abutton: true},
 ];

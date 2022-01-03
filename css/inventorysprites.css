@@ -45,6 +45,14 @@ div.level0 {
   background: url('../images/items/bow.png');
 }
 
+.bow.level2 {
+  background: url('../images/items/silvers.png');
+}
+
+.silvers {
+  background: url('../images/items/silvers.png');
+}
+
 .sword {
   background: url('../images/items/fightersword.png');
 }
@@ -53,8 +61,24 @@ div.level0 {
   background: url('../images/items/master_sword.png');
 }
 
+.sword.level3 {
+  background: url('../images/items/tempered_sword.png');
+}
+
+.sword.level4 {
+  background: url('../images/items/gold_sword.png');
+}
+
 .mastersword {
   background: url('../images/items/master_sword.png');
+}
+
+.temperedsword {
+  background: url('../images/items/tempered_sword.png');
+}
+
+.goldsword {
+  background: url('../images/items/gold_sword.png');
 }
 
 .hookshot {

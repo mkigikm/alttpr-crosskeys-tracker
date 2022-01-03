@@ -9,7 +9,7 @@ class Inventory {
       el.dataset.name = item.name;
       this.objects.set(item.name, {
         level: 0,
-        maxLevel: item.progressive ? 2 : 1,
+        maxLevel: item.maxLevel,
         el: el,
       });
       item.abutton ? abuttonEl.appendChild(el) : ybuttonEl.appendChild(el);
