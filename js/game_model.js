@@ -9,7 +9,11 @@ class GameModel {
     this.connections = connections;
   }
 
-  requirements(location) {
+  requirements(location, areas) {
+    if (areas && !areas.has(location.area)) return false;
+    if (location.name === 'Turtle Rock Main' && !this.requirements(this.hyruleMap.locations.get('Turtle Rock Medallion'), areas)) return false;
+    if (location.name === 'Misery Mire' && !this.requirements(this.hyruleMap.locations.get('Misery Mire Medallion'), areas)) return false;
+
     const dam = this.hyruleMap.pois.get('dam');
     return !location.requirement || location.requirement.split('-').every((req) => {
       switch (req) {
@@ -24,14 +28,13 @@ class GameModel {
       case 'dam':
         return dam && (dam.world === 'lw' || this.inventory.objects.get('mearl').level > 0);
       case 'smith':
-        // TODO access to frog area
         return this.hyruleMap.pois.has('smith');
       case 'bigbomb':
         return this.dungeons.completedRedCrystals() && this.hyruleMap.pois.has('bomb-shop');
       case 'gt':
         return this.dungeons.completedGannonsTower();
       case 'medallion':
-        return this.inventory.hasMedallion(location.medallion);
+        return this.inventory.hasMedallion(location.medallion) && this.inventory.objects.get('sword').level > 0;
       case 'crystals':
         return this.dungeons.completedCrystals();
       case 'climb':

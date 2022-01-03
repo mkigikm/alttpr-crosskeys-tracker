@@ -64,7 +64,7 @@ class HyruleMapView {
           locEl.classList.add(this.locationClass(loc));
         }
 
-        if (areas.has(loc.area) && this.game.requirements(loc)) {
+        if (this.game.requirements(loc, areas)) {
           locEl.classList.add('checkable');
         } else {
           locEl.classList.add('uncheckable');

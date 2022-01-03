@@ -8,7 +8,7 @@ const portals = [
 
   {a: 'dm-south-west', b: 'ddm-west'},
   {a: 'dm-south-east', b: 'ddm-east', requirement: 'glove+'},
-  {a: 'dm-north-east', b: 'ddm-top', requirement: 'hammer-glove+'},
+  {a: 'dm-north-east', b: 'ddm-medallion', requirement: 'hammer-glove+'},
 ];
 
 const mirrors = [
@@ -101,6 +101,7 @@ const regularEdges = [
 
   // dark world
   {a: 'dw-village', b: 'dw-village-shop', requirement: 'mearl-hammer'},
+  {a: 'dw-village', b: 'frog-trap', requirement: 'mearl-glove+'},
   {a: 'dw-village', b: 'bumper-cave-bottom', requirement: 'mearl-glove'},
   {a: 'dw-village', b: 'hammer-pegs', requirement: 'mearl-glove+'},
   {a: 'dw-village', b: 'swamp-palace'},
@@ -139,6 +140,7 @@ const regularEdges = [
   {a: 'ddm-top', b: 'ddm-east'},
   {a: 'ddm-top', b: 'ddm-west'},
   {a: 'ddm-floating-island', b: 'ddm-top'},
+  {a: 'ddm-medallion', b: 'ddm-top'},
 ];  
 
 const edges = regularEdges.concat(mirrors).concat(portals);
