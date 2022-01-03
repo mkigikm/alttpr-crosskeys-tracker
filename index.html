@@ -1,5 +1,6 @@
 <html>
   <head>
+    <title>ALTTPR Crosskeys Tracker</title>
     <link rel="stylesheet" href="./css/inventorysprites.css">
     <link rel="stylesheet" href="./css/dungeons.css">
     <link rel="stylesheet" href="./css/hyrule-map.css">
@@ -88,6 +89,7 @@
       const hyruleMap = new HyruleMapModel(lwLocations, dwLocations);
       const inventory = new InventoryModel(totalInventory);
       const controlPanel = new ControlPanelModel();
+      const connectors = new Connectors(hyruleMap);
       const game = new GameModel(hyruleMap, inventory, dungeonProgress, controlPanel, edges, connections);
 
       const dungeonProgressView = new DungeonProgressView(document.getElementById('dungeons'), game);
@@ -101,7 +103,7 @@
         document.getElementById('controls'), document.getElementById('display'), game
       );
 
-      const controller = new Controller(dungeonProgressView, hyruleMapView, inventoryView, controlPanelView, game, new Connectors());
+      const controller = new Controller(dungeonProgressView, hyruleMapView, inventoryView, controlPanelView, game, connectors);
       document.getElementsByTagName('body')[0].addEventListener('contextmenu', e => e.preventDefault());
 
       const autotracker = new Autotracker(game, controller);

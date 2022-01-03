@@ -13,7 +13,6 @@ const connections = [
   ['spec-rock-item', 'spec-rock-exit', '#dda0dd', false],
   ['paradox-5items', 'paradox-exit', '#7fffd4', true],
   ['paradox-5items', 'paradox-2items', '#7fffd4', true],
-  ['paradox-2items', 'paradox-exit', '#7fffd4', true],
   ['hyrule-main', 'hyrule-east', '#00bfff', true],
   ['hyrule-main', 'hyrule-west', '#00bfff', true],
   ['hyrule-east', 'hyrule-west', '#00bfff', true],
@@ -29,7 +28,8 @@ const connections = [
 ];
 
 class Connectors {
-  constructor() {
+  constructor(hyruleMap) {
+    this.hyruleMap = hyruleMap;
     this.ctxs = new Map();
     for (const world of ['lw', 'dw']) {
       const canvas = document.getElementById(`${world}-connections`);
@@ -46,9 +46,14 @@ class Connectors {
       ctx.clearRect(0, 0, 500, 500);
     }
 
-    for (const [a, b, color, twoWay] of connections) {
-      const locationA = hyruleMap.pois.get(a);
-      const locationB = hyruleMap.pois.get(b);
+    const loopConnections = [...connections];
+    if (!this.hyruleMap.pois.has('paradox-5items')) {
+      loopConnections.push(['paradox-exit', 'paradox-2items', '#7fffd4', false]);
+    }
+
+    for (const [a, b, color] of loopConnections) {
+      const locationA = this.hyruleMap.pois.get(a);
+      const locationB = this.hyruleMap.pois.get(b);
 
       if (locationA && locationB) {
         if (locationA.hidden || locationB.hidden) {
@@ -60,11 +65,6 @@ class Connectors {
         for (const ctx of [ctxA, ctxB]) {
           ctx.beginPath();
           ctx.strokeStyle = color;
-          if (twoWay) {
-            ctx.setLineDash([]);
-          } else {
-            ctx.setLineDash([5, 15]);
-          }
           ctx.moveTo(locationA.x, locationA.y);
           ctx.lineTo(locationB.x, locationB.y);
           ctx.stroke();
@@ -100,5 +100,3 @@ class Connectors {
     }
   }
 }
-
-const connectors = new Connectors();
