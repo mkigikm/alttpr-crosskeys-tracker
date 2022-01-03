@@ -171,9 +171,9 @@ class Controller {
     const name = el.classList[0];
     const poi = this.game.hyruleMap.pois.get(name);
     if (poi) {
-      this.game.controlPanel.setDisplayText(`${name} at ${poi.name}`);
+      this.game.controlPanel.setDisplayText(`${this.humanePoi(name)} at ${poi.name}`);
     } else {
-      this.game.controlPanel.setDisplayText(name);
+      this.game.controlPanel.setDisplayText(this.humanePoi(name));
     }
     this.render();
   }
@@ -187,37 +187,37 @@ class Controller {
     const location = this.game.hyruleMap.locations.get(locationName);
     const poi = location.poi;
     if (poi?.unique || poi?.type === 'item') {
-      this.game.controlPanel.setDisplayText(`${poi.name} at ${locationName}`);
+      this.game.controlPanel.setDisplayText(`${this.humanePoi(poi.name)} at ${locationName}`);
     } else if ((location.type === 'item' || location.type === 'drop') && location.key > 0) {
       let item;
       if (location.key === 1) {
-        item = 'key';
+        item = 'Key';
       } else if (location.key === 2) {
-        item = 'big key';
+        item = 'Big Key';
       } else if (location.key === 3) {
-        item = 'map';
+        item = 'Map';
       } else {
-        item = 'rupees';
+        item = 'Rupees';
       }
       this.game.controlPanel.setDisplayText(`${item} at ${locationName}`);
     } else if (location.key > 0) {
       let item;
       if (location.key === 1) {
-        item = 'chest';
+        item = 'Chest';
       } else if (location.key === 2) {
-        item = 'dark cave';
+        item = 'Dark Cave';
       } else if (location.key === 3) {
-        item = 'luck fairy';
+        item = 'Luck Fairy';
       } else if (location.key === 4) {
-        item = 'shop';
+        item = 'Shop';
       } else if (location.key === 5) {
-        item = 'key';
+        item = 'Key';
       } else if (location.key === 6) {
-        item = 'big key';
+        item = 'Big Key';
       } else if (location.key === 7) {
-        item = 'map';
+        item = 'Map';
       } else {
-        item = 'rupees';
+        item = 'Rupees';
       }
       this.game.controlPanel.setDisplayText(`${item} at ${locationName}`);
     } else {
@@ -245,7 +245,7 @@ class Controller {
     const dungeon = this.translateDungeon(el.childNodes[0].textContent);
     const poi = this.game.hyruleMap.pois.get(dungeon);
     if (poi) {
-      this.game.controlPanel.setDisplayText(`${dungeon} at ${poi.name}`);
+      this.game.controlPanel.setDisplayText(`${this.humanePoi(dungeon)} at ${poi.name}`);
     }
     this.render();
   }
@@ -259,6 +259,12 @@ class Controller {
       return 'tr-back';
     }
     return dungeon;
+  }
+
+  humanePoi(poiName) {
+    const location = this.game.hyruleMap.autotrackLocations.find((loc) => loc.poiName === poiName);
+    if (location) return location.name;
+    return poiName;
   }
 
   clearSelected(skip) {
