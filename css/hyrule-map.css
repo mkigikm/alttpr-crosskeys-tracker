@@ -103,7 +103,7 @@ canvas {
 }
 
 .fairy-drop {
-  background-image: url('../images/map/fairy.png');
+  background-image: url('../images/map/fountain_fairy.png');
 }
 
 .lumberjack-drop {
@@ -270,7 +270,7 @@ canvas {
 }
 
 .fairy-top, .fairy-bottom {
-  background-image: url('../images/map/great_fairy.png');
+  background-image: url('../images/map/fairy.png');
 }
 
 .brothers-west, .brothers-east {
