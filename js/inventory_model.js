@@ -3,7 +3,7 @@ class InventoryModel {
     this.objects = new Map();
 
     for (const item of totalInventory) {
-      this.objects.set(item.name, { name: item.name, level: 0, maxLevel: item.maxLevel });
+      this.objects.set(item.name, { name: item.name, level: 0, maxLevel: item.maxLevel || 1 });
     }
   }
 
