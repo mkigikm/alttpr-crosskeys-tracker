@@ -90,7 +90,6 @@ class Controller {
       this.game.hyruleMap.placePoi(locationName, { name: dungeon, type: 'entrance', unique: true });
       this.clearSelected();
     } else if (this.game.controlPanel.selected) {
-      console.log(this.game.controlPanel.selected);
       this.game.hyruleMap.placePoi(locationName, this.game.controlPanel.selected);
       this.clearSelected();
     } else {
@@ -171,7 +170,7 @@ class Controller {
     const name = el.classList[0];
     const poi = this.game.hyruleMap.pois.get(name);
     if (poi) {
-      this.game.controlPanel.setDisplayText(`${this.humanePoi(name)} at ${poi.name}`);
+      this.game.controlPanel.setDisplayText(`${this.humanePoi(name, true)} at ${poi.name}`);
     } else {
       this.game.controlPanel.setDisplayText(this.humanePoi(name));
     }
@@ -187,7 +186,7 @@ class Controller {
     const location = this.game.hyruleMap.locations.get(locationName);
     const poi = location.poi;
     if (poi?.unique || poi?.type === 'item') {
-      this.game.controlPanel.setDisplayText(`${this.humanePoi(poi.name)} at ${locationName}`);
+      this.game.controlPanel.setDisplayText(`${this.humanePoi(poi.name, true)} at ${locationName}`);
     } else if ((location.type === 'item' || location.type === 'drop') && location.key > 0) {
       let item;
       if (location.key === 1) {
@@ -261,7 +260,8 @@ class Controller {
     return dungeon;
   }
 
-  humanePoi(poiName) {
+  humanePoi(poiName, gannonFix) {
+    if (gannonFix && poiName === 'ganon') return 'Gannon';
     const location = this.game.hyruleMap.autotrackLocations.find((loc) => loc.poiName === poiName);
     if (location) return location.name;
     return poiName;
