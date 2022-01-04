@@ -222,7 +222,7 @@ class Autotracker {
     const hasFirstBow = !!(data[t(BOW_TRACKING_OFFSET)] & BOW_MASKS.first_bow);
     const hasSilverBow = !!(data[t(BOW_TRACKING_OFFSET)] & BOW_MASKS.silver_bow);
     const hasSecondBow = !!(data[t(BOW_TRACKING_OFFSET)] & BOW_MASKS.second_bow);
-    if ((hasFirstBow && hasSecondBow) || hasSilverBow) {
+    if (hasSilverBow) {
       updated = this.game.inventory.autotrack('bow', 2) || updated;
     } else if (hasFirstBow || hasSecondBow) {
       updated = this.game.inventory.autotrack('bow', 1) || updated;
