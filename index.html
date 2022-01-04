@@ -39,28 +39,67 @@
      #timer.stopped {
        filter: brightness(50%);
      }
+     #modal {
+       position: absolute;
+       width: 100%;
+       height: 100%;
+       background-color: rgba(0, 0, 0, 0.6);
+       top: 0;
+       left: 0;
+       z-index: 1000;
+       display: none;
+     }
+     #modal > div {
+       position: absolute;
+       top: 200px;
+       left: 50px;
+       width: 400px;
+       height: 100px;
+       background-color: black;
+     }
+     #modal > div > h3 {
+       text-align: center;
+     }
+     #autotracker-url {
+       width: 250px;
+       font-family: Arial;
+     }
+     #timer:hover, #autotracker-modal-control:hover {
+       cursor: pointer;
+       background-color: green;
+     }
     </style>
   </head>
   <body>
-    <div class="hyrule-maps">
-      <div id="lw-map" style="display: block">
-        <canvas id="lw-connections" width="500" height="500"></canvas>
+    <div style="position: relative">
+      <div class="hyrule-maps">
+        <div id="lw-map" style="display: block">
+          <canvas id="lw-connections" width="500" height="500"></canvas>
+        </div>
+        <div id="dw-map" style="display: none">
+          <canvas id="dw-connections" width="500" height="500"></canvas>
+        </div>
+        <div id="portal"></div>
       </div>
-      <div id="dw-map" style="display: none">
-        <canvas id="dw-connections" width="500" height="500"></canvas>
+      <div id="display"></div>
+      <div id="controls"></div>
+      <div id="inventory-dungeons">
+        <div id="items">
+          <div id="ybutton"></div>
+          <div id="abutton"></div>
+        </div>
+        <div id="dungeons"></div>
       </div>
-      <div id="portal"></div>
+      <div id="timer"></div>
+      <div id="modal">
+        <div>
+          <h3>Autotracker URL</h3>
+          <input id="autotracker-url" type="text" />
+          <button id="autotracker-connect">Connect</button>
+          <button id="autotracker-disconnect">Disconnect</button>
+        </div>
+      </div>
     </div>
-    <div id="display"></div>
-    <div id="controls"></div>
-    <div id="inventory-dungeons">
-      <div id="items">
-        <div id="ybutton"></div>
-        <div id="abutton"></div>
-      </div>
-      <div id="dungeons"></div>
-    </div>
-    <div id="timer"></div>
 
     <script src="js/lightworld_locations.js"></script>
     <script src="js/darkworld_locations.js"></script>
@@ -104,11 +143,17 @@
       );
 
       const controller = new Controller(dungeonProgressView, hyruleMapView, inventoryView, controlPanelView, game, connectors);
-      document.getElementsByTagName('body')[0].addEventListener('contextmenu', e => e.preventDefault());
-
       const autotracker = new Autotracker(game, controller);
-      console.log('starting autotracker');
-      autotracker.connect();
+      document.getElementById('autotracker-connect').addEventListener('click', (e) => {
+        autotracker.connect(document.getElementById('autotracker-url').value);
+        document.getElementById('modal').style.display = 'none';
+      });
+      document.getElementById('autotracker-disconnect').addEventListener('click', (e) => {
+        autotracker.cleanup();
+        document.getElementById('modal').style.display = 'none';
+      });
+      document.getElementById('autotracker-url').value = 'ws://localhost:8080';
+      document.getElementsByTagName('body')[0].addEventListener('contextmenu', e => e.preventDefault());
 
       const timer = new TimerModel();
       const timerView = new TimerView(document.getElementById('timer'), timer);

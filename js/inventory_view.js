@@ -18,12 +18,21 @@ class InventoryView {
         this.ybuttonEl.appendChild(el);
       }
     }
+    const el = document.createElement('div');
+    el.id = 'autotracker-modal-control';
+    el.textContent = "AUTOTRACKING DISCONNECTED";
+    el.addEventListener('click', (e) => {
+      document.getElementById('modal').style.display = 'block';
+    });
+    this.abuttonEl.appendChild(el);
   }
 
   render() {
     for (const buttonEl of [this.abuttonEl, this.ybuttonEl]) {
       for (const itemEl of buttonEl.children) {
         const object = this.game.inventory.objects.get(itemEl.classList[0]);
+        if (!object) continue;
+
         itemEl.className = itemEl.classList[0];
         itemEl.classList.add(`level${object.level}`);
         itemEl.classList.toggle('placing2', !!object.selected);

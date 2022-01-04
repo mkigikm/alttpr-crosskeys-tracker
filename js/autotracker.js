@@ -117,10 +117,12 @@ class Autotracker {
   }
 
   reconnect() {
-    setTimeout(() => this.connect(this.url), 5000);
+    this.timer = setTimeout(() => this.connect(this.url), 5000);
   }
 
   cleanup() {
+    document.getElementById('autotracker-modal-control').textContent = 'AUTOTRACKING DISCONNECTED';
+
     if (this.timer) {
       clearTimeout(this.timer);
       this.timer = null;
@@ -152,7 +154,7 @@ class Autotracker {
       return;
     }
     this.deviceName = results[0];
-    console.log('attaching to', this.deviceName);
+    document.getElementById('autotracker-modal-control').textContent = 'AUTOTRACKING CONNECTED';
     this.socket.send(JSON.stringify({
       Opcode: 'Attach',
       Space: 'SNES',
