@@ -161,6 +161,7 @@ class Autotracker {
       Operands: [this.deviceName],
     }));
     this.loopCount = 0;
+    this.trackedMaps = {};
     this.loop();
   }
 
@@ -256,7 +257,10 @@ class Autotracker {
     for (const dungeon in MAP_OFFSETS) {
       const offset = t(MAP_OFFSETS[dungeon][0]);
       const mask = MAP_OFFSETS[dungeon][1];
-      updated = this.game.dungeons.autotrackMap(dungeon, data[offset] & mask) || updated;
+      if (data[offset] & mask && !this.trackedMaps[dungeon]) {
+        this.trackedMaps[dungeon] = true;
+        updated = this.game.dungeons.autotrackMap(dungeon, data[offset] & mask) || updated;
+      }
     }
 
     updated && this.controller.render();
