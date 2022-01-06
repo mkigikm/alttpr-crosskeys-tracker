@@ -20,7 +20,7 @@ Entrances you can logically reach will have a green border. Unreachable ones wil
 
 ## Autotracking
 
-Autotracking through QUsb2Snes is implemented. Start it by clicking on the box beside the Moon Pearl with the autotracking text it in. This will open a text input for the URL of the QUsb2Snes server. Autotracking supports all inventory items and locations. Dark caves will not automatically track unless you have the lamp, but the will be marked as dark caves.
+Autotracking works with QUsb2Snes. Start it by clicking on the box beside the Moon Pearl with the autotracking text it in. This will open a text input for the URL of the QUsb2Snes server. Autotracking supports all inventory items and locations. Dark caves will not automatically track unless you have the lamp, but will be marked as dark caves.
 
 ## Known Issues
 
