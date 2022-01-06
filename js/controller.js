@@ -261,7 +261,8 @@ class Controller {
   }
 
   humanePoi(poiName, gannonFix) {
-    if (gannonFix && poiName === 'ganon') return 'Gannon';
+    if (gannonFix && poiName === 'ganon') return 'Ganon';
+    if (gannonFix && poiName === 'uncle') return 'Uncle';
     const location = this.game.hyruleMap.autotrackLocations.find((loc) => loc.poiName === poiName);
     if (location) return location.name;
     return poiName;

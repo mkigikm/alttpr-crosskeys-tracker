@@ -504,7 +504,7 @@ const dwLocations = [
   },
   {
     area: 'ddm-top',
-    name: 'Gannon\'s Tower',
+    name: 'Ganon\'s Tower',
     requirement: 'crystals',
     poiName: 'GT',
     x: 540,
