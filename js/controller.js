@@ -172,7 +172,7 @@ class Controller {
     if (poi) {
       this.game.controlPanel.setDisplayText(`${this.humanePoi(name, true)} at ${poi.name}`);
     } else {
-      this.game.controlPanel.setDisplayText(this.humanePoi(name));
+      this.game.controlPanel.setDisplayText(this.humanePoi(name, true));
     }
     this.render();
   }
