@@ -39,6 +39,13 @@ canvas {
   z-index: 2;
 }
 
+#portal:hover {
+  width: 50px;
+  height: 50px;
+  transform: translate(-5px, -5px);
+  cursor: pointer;
+}
+
 .location {
   position: absolute;
   width: 19px;
@@ -54,6 +61,7 @@ canvas {
   height: 29px;
   transform: translate(-5px, -5px);
   z-index: 10000;
+  cursor: pointer;
 }
 
 .location.checkable {

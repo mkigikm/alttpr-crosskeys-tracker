@@ -12,6 +12,8 @@ Dungeon info can be tracked by click on the columns to the left of the name. The
 
 The medallions for Misery Mire and Turtle Rock can be tracked by right click on the square above the entrances.
 
+To switch between the light and dark world maps, click on the portal in the lower left of the map (desert and mire area).
+
 There is a timer at the bottom that can be started and paused by clicking on it.
 
 ## Logical Access
