@@ -20,10 +20,14 @@ class InventoryView {
     }
     const el = document.createElement('div');
     el.id = 'autotracker-modal-control';
-    el.textContent = "AUTOTRACKING DISCONNECTED";
     el.addEventListener('click', (e) => {
       document.getElementById('modal').style.display = 'block';
     });
+    const textEl = document.createElement('p');
+    textEl.id = 'autotracker-status';
+    textEl.textContent = "AUTOTRACKING DISCONNECTED";
+    el.appendChild(textEl);
+
     this.abuttonEl.appendChild(el);
   }
 

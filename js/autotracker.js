@@ -121,7 +121,7 @@ class Autotracker {
   }
 
   cleanup() {
-    document.getElementById('autotracker-modal-control').textContent = 'AUTOTRACKING DISCONNECTED';
+    document.getElementById('autotracker-status').textContent = 'AUTOTRACKING DISCONNECTED';
 
     if (this.timer) {
       clearTimeout(this.timer);
@@ -154,7 +154,7 @@ class Autotracker {
       return;
     }
     this.deviceName = results[0];
-    document.getElementById('autotracker-modal-control').textContent = 'AUTOTRACKING CONNECTED';
+    document.getElementById('autotracker-status').textContent = 'AUTOTRACKING CONNECTED';
     this.socket.send(JSON.stringify({
       Opcode: 'Attach',
       Space: 'SNES',
