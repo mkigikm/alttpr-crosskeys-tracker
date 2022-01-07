@@ -8,9 +8,15 @@
 #dungeons > div {
   display: flex;
   flex-flow: row wrap;
-  height: 30px;
+  height: 27px;
+  border-bottom: 3px solid black;
   cursor: pointer;
   text-align: right;
+}
+
+#dungeons > div:hover {
+    border-bottom: 3px solid green;
+    height: 27px;
 }
 
 #dungeons > div > div {

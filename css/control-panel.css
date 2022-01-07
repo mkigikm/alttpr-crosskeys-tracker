@@ -16,6 +16,12 @@
   height: 40px;
 }
 
+.control-selection > div:hover, .control-specifics > div > div:hover, #abutton > div:hover, #ybutton > div:hover {
+  outline: 3px solid green;
+  cursor: pointer;
+  outline-offset: -4px;
+}
+
 .control-specifics {
   width: 420px;
   display: flex;
